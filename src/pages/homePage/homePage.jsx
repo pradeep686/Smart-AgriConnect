@@ -1,5 +1,4 @@
 import React from "react";
-import farmBanner from "../../assets/farm-banner.jpg";
 
 const HomePage = () => {
   return (
