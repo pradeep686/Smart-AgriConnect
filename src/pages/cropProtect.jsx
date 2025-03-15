@@ -24,6 +24,7 @@ const CropProtect = () => {
           </div>
         </div>
       </div>
+      
     );
   };
   

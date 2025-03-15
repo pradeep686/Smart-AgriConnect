@@ -12,6 +12,15 @@ const CropInsight = () => {
           <p className="text-gray-600">Details about the crop...</p>
         </div>
 
+
+
+
+
+
+
+
+        
+
         <div className="w-full bg-white shadow-lg rounded-lg p-6">
           <h3 className="text-xl font-bold">Crop Data 2</h3>
           <p className="text-gray-600">Details about another crop...</p>
