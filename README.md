@@ -2,6 +2,7 @@
 # Smart-AgriConnect
   A Unified Digital Platform for Farmers.
   checking...
+  hi...
 
 # React + Vite
 
