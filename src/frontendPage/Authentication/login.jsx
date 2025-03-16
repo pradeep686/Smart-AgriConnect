@@ -71,7 +71,7 @@ const AuthPage = ({ onClose }) => {
             {/* Login / Sign Up Button */}
             <button
               type="submit"
-              className="w-full !bg-orange-400 text-black py-3 rounded-lg font-semibold transition-all duration-300 hover:!bg-orange-500 shadow-md"
+              className="w-full !bg-orange-400 text-white py-3 rounded-lg font-semibold transition-all duration-300 hover:!bg-orange-500 shadow-md"
             >
               {isSignUp ? "Sign Up" : "Login"}
             </button>

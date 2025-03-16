@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useState } from "react";
-import HomePage from "./pages/homePage/homePage";
-import Navbar from "./pages/navbar";
-import Subsidies from "./pages/subsidiesPage/subsidies";
-import CropInsight from "./pages/cropInsigthtPage/cropInsight";
-import CropProtect from "./pages/cropProtect";
-import Weather from "./pages/weather";
-import TradeHub from "./pages/tradHub";
-import Discussion from "./pages/discussion";
-import Feedback from "./pages/feedBack";
-import AuthPage from "./pages/Authentication/login";
+import HomePage from "./frontendPage/homePage/homePage";
+import Navbar from "./frontendPage/navbarPage/navbar";
+import Subsidies from "./frontendPage/subsidiesPage/subsidies";
+import CropInsight from "./frontendPage/cropInsigthtPage/cropInsight";
+import CropProtect from "./frontendPage/cropProtectPage/cropProtect";
+import Weather from "./frontendPage/weatherPage/weather";
+import TradeHub from "./frontendPage/tradeHubPage/tradHub";
+import Discussion from "./frontendPage/discussionPage/discussion";
+import Feedback from "./frontendPage/feedBackPage/feedBack";
+import AuthPage from "./frontendPage/Authentication/login";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
