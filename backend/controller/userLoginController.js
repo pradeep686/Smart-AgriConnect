@@ -52,7 +52,7 @@ const login = async (req, res) => {
         if (!checkPass) {
             return res.status(401).json({ msg: "Invalid password. Try again." }); 
         }
-
+        console.log("hi")
         return res.status(200).json({
             msg: "Login successful",
             token: createToken(checkUserExist.id),
