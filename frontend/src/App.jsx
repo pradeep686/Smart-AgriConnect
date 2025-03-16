@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import HomePage from "./frontendPage/homePage/homePage";
+
 import Navbar from "./frontendPage/navbarPage/navbar";
 import Subsidies from "./frontendPage/subsidiesPage/subsidies";
 import CropInsight from "./frontendPage/cropInsigthtPage/cropInsight";
