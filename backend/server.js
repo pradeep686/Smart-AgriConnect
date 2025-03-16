@@ -1,12 +1,31 @@
-const express=require('express')
-const app=express()
-const env=require('dotenv').config()
-const PORT=process.env.PORT||9009
+const express = require('express');
+const app = express();
+const cors = require('cors');
+const env = require('dotenv').config();
+const db = require('./config/db');
+const userLogin = require('./router/userLoginRouter');
 
-app.get('/',(req,res)=>{
-    return res.json({msg:"hi"})
-})
+const PORT = process.env.PORT || 9009;
 
-app.listen(PORT,()=>{
-    console.log("app is running in:"+PORT)
-})
+app.use(cors());
+app.use(express.json());
+
+// Middleware to log request paths
+app.use((req, res, next) => {
+    console.log(req.path);
+    next();
+});
+
+// Route for user login
+app.use('/userLogin', userLogin);
+
+// Default route
+app.get('/', (req, res) => {
+    return res.json({ msg: "hi" });
+});
+
+// Start the server
+app.listen(PORT, () => {
+    console.log("App is running on port: " + PORT);
+    db();
+});
