@@ -19,7 +19,7 @@ app.use((req, res, next) => {
 // Route for user login
 app.use('/userLogin', userLogin);
 
-app.use('/userAddress',userLogin)
+app.use('/userAddress',userAddress)
 
 // Default route
 app.get('/', (req, res) => {

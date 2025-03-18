@@ -3,7 +3,7 @@ const mongoose=require('mongoose')
 const schema=new mongoose.Schema({
     userId:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"userlogin",
+        ref:"userLogin",
         required:"true"
     },
     doorNo:{
