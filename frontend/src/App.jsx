@@ -11,7 +11,7 @@ import TradeHub from "./frontendPage/tradeHubPage/tradHub";
 import Discussion from "./frontendPage/discussionPage/discussion";
 import Feedback from "./frontendPage/feedBackPage/feedBack";
 import Login from "./frontendPage/Authentication/login";
-
+import UserProfile from "./frontendPage/userProfile";
 function App() {
   return (
     <Router>
@@ -32,6 +32,7 @@ function App() {
           <Route path="/trade-hub" element={<TradeHub />} />
           <Route path="/discussion" element={<Discussion />} />
           <Route path="/feedback" element={<Feedback />} />
+          <Route path='/userProfile' element={<UserProfile/>}/>
         </Routes>
       </div>
     </Router>
