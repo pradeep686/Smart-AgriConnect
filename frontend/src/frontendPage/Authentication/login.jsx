@@ -69,7 +69,7 @@ const Login = ({ onClose, onSwitchToSignUp, onSwitchToReset }) => {
               </span>
             </div>
 
-            <button type="submit" className="w-full bg-orange-400 text-white py-3 rounded-lg font-semibold transition-all hover:bg-orange-500 shadow-md">Login</button>
+            <button type="submit" className="w-full !bg-orange-400 text-white py-3 rounded-lg font-semibold transition-all !hover:bg-orange-500 shadow-md">Login</button>
           </form>
 
           <p className="mt-5 text-green-700 text-center">

@@ -21,7 +21,7 @@
 a {
   font-weight: 600;
   font-size: 1.2rem;
-  color: #ccd0cd; /* Dark Green for better visibility */
+  color: #d2dcd5; /* Dark Green for better visibility */
   text-decoration: none;
   transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
@@ -54,10 +54,11 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #e42208;
+  background-color: #0baaa7; 
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
