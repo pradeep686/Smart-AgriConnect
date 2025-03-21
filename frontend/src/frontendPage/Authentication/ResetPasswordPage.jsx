@@ -64,7 +64,7 @@ const ResetPasswordPage = () => {
               </span>
             </div>
 
-            <button type="submit" className="w-full bg-green-500 text-white py-3 rounded-lg font-semibold transition-all hover:bg-green-600 shadow-md">Reset Password</button>
+            <button type="submit" className="w-full !bg-orange-400 text-white py-3 rounded-lg font-semibold transition-all hover:bg-green-600 shadow-md">Reset Password</button>
           </form>
 
           <p className="mt-5 text-gray-700 text-center">
