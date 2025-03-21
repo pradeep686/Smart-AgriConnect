@@ -1,9 +1,9 @@
 import React from 'react'
-
+import {FaUserCircle} from "react-icons/fa"
 function UserProfile() {
   return (
     <div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, dicta.
+      <FaUserCircle/>
     </div>
   )
 }

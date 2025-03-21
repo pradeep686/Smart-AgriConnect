@@ -17,7 +17,7 @@ function App() {
     <Router>
       {/* Keep Navbar outside of Routes for global access */}
       <Navbar />
-
+      <UserProfile/>
       <div className="flex-1 p-10 bg-gray-100 min-h-screen">
         <Routes>
           <Route path="/" element={<Navigate to="/homepage" replace />} />
@@ -32,7 +32,6 @@ function App() {
           <Route path="/trade-hub" element={<TradeHub />} />
           <Route path="/discussion" element={<Discussion />} />
           <Route path="/feedback" element={<Feedback />} />
-          <Route path='/userProfile' element={<UserProfile/>}/>
         </Routes>
       </div>
     </Router>
