@@ -84,7 +84,7 @@ const SignUpPage = () => {
               </span>
             </div>
 
-            <button type="submit" className="w-full bg-orange-400 text-white py-3 rounded-lg font-semibold transition-all hover:bg-orange-500 shadow-md" disabled={loading}>
+            <button type="submit" className="w-full !bg-orange-400 text-white py-3 rounded-lg font-semibold transition-all hover:bg-orange-500 shadow-md" disabled={loading}>
               {loading ? "Signing Up..." : "Sign Up"}
             </button>
           </form>
