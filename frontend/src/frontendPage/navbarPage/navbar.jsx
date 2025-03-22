@@ -47,7 +47,7 @@ const Navbar = () => {
 
         {/* Navigation Links */}
         <ul className="w-full space-y-4">
-          {["homepage", "subsidies", "crop-insight", "crop-protect", "weather", "trade-hub", "discussion", "feedback"].map(
+          {["homepage", "subsidies", "crop-insight", "crop-protect", "weather", "trade-hub", "forum", "feedback"].map(
             (item, index) => (
               <li key={index}>
                 <Link

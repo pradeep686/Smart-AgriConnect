@@ -4,7 +4,7 @@ const HomePage = () => {
   return (
     <div className="flex min-h-screen bg-gray-100">
       {/* Main Content (After Navbar) */}
-      <div className="ml-64 flex-1">
+      <div className="ml-64 p-8 flex-1">
         {/* About Us Section (Full-width rectangle) */}
         <div className="bg-gradient-to-r from-700 to-900 text-white py-16 px-12 shadow-lg rounded-xl mx-5 mt-5">
           <h2 className="text-4xl font-bold text-green-600 mb-4 text-left tracking-wide  border-b-4 border-green-600 pb-2 inline-block">

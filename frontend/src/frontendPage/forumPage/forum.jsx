@@ -1,7 +1,7 @@
-import { motion } from "framer-motion";
+import {motion} from "framer-motion"
 
-const CropProtect = () => {
-  return (
+const Forum = () => {
+    return (
     <div className="min-h-screen bg-gray-100 flex">
       <div className="ml-64 p-8 w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -16,11 +16,11 @@ const CropProtect = () => {
             whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)" }} // Hover effect
           >
             <div className="w-full h-48 bg-cover bg-center rounded-t-lg" 
-                 style={{ backgroundImage: "url('/images/fertilizer2.jpg')" }}>
+                 style={{ backgroundImage: "url('/images/discussion.jpg')" }}>
             </div>
-            <h2 className="text-xl font-bold mt-4 mb-2 text-green-700">Explore Fertilizer</h2>
+            <h2 className="text-xl font-bold mt-4 mb-2 text-green-700">Discussion Forum</h2>
             <p className="text-gray-700">
-              Boost your crop yield with the right fertilizers! Click below to explore the best options for your farm.
+            Connect with fellow farmers, share insights, and find solutions to agricultural challenges. Click below to join the conversation!
             </p>
           </motion.div>
 
@@ -34,11 +34,11 @@ const CropProtect = () => {
             whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)" }}
           >
             <div className="w-full h-48 bg-cover bg-center rounded-t-lg" 
-                 style={{ backgroundImage: "url('/images/pesticide.avif')" }}>
+                 style={{ backgroundImage: "url('/images/success.avif')" }}>
             </div>
-            <h2 className="text-xl font-bold mt-4 mb-2 text-green-700">Explore Pesticides</h2>
+            <h2 className="text-xl font-bold mt-4 mb-2 text-green-700">Success Stories</h2>
             <p className="text-gray-700">
-              Protect your crops from pests and diseases! Click below to find the right pesticides for your farm.
+            Get inspired by real farmers who achieved success with innovative farming techniques. Click below to explore their journeys!
             </p>
           </motion.div>
 
@@ -46,6 +46,7 @@ const CropProtect = () => {
       </div>
     </div>
   );
-};
-
-export default CropProtect;
+  };
+  
+  export default Forum;
+  
