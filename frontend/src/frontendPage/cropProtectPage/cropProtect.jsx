@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const CropProtect = () => {
+  const navigate = useNavigate(); // ✅ Define navigate before using it
+
   return (
     <div className="min-h-screen bg-gray-100 flex">
       <div className="ml-64 p-8 w-full">
@@ -9,11 +12,11 @@ const CropProtect = () => {
           {/* Fertilizer Section */}
           <motion.div
             className="bg-white p-8 rounded-lg shadow-lg cursor-pointer transform transition-all duration-300"
-            onClick={() => alert("Agriculture Loan Subsidy clicked!")}
-            initial={{ opacity: 0, scale: 0.8 }}  // Starts small and transparent
-            animate={{ opacity: 1, scale: 1 }}   // Becomes visible
-            transition={{ duration: 0.1 }}       // Smooth transition
-            whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)" }} // Hover effect
+            onClick={() => navigate("/fertilizer-info")} // ✅ Now navigate is defined
+            initial={{ opacity: 0, scale: 0.8 }}  
+            animate={{ opacity: 1, scale: 1 }}  
+            transition={{ duration: 0.1 }}       
+            whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)" }}
           >
             <div className="w-full h-48 bg-cover bg-center rounded-t-lg" 
                  style={{ backgroundImage: "url('/images/fertilizer2.jpg')" }}>
@@ -27,7 +30,7 @@ const CropProtect = () => {
           {/* Pesticides Section */}
           <motion.div
             className="bg-white p-8 rounded-lg shadow-lg cursor-pointer transform transition-all duration-300"
-            onClick={() => alert("Fertilizer Subsidy clicked!")}
+            onClick={() => navigate("/pesticide-info")}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.1 }}

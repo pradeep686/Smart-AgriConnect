@@ -6,9 +6,13 @@ import Navbar from "./frontendPage/navbarPage/navbar";
 import Subsidies from "./frontendPage/subsidiesPage/subsidies";
 import CropInsight from "./frontendPage/cropInsigthtPage/cropInsight";
 import CropProtect from "./frontendPage/cropProtectPage/cropProtect";
+import PesticideInfo from "./frontendPage/cropProtectPage/pesticide.jsx";
+import FertilizerInfo from "./frontendPage/cropProtectPage/fertilizer.jsx";
 import Weather from "./frontendPage/weatherPage/weather";
 import TradeHub from "./frontendPage/tradeHubPage/tradHub";
 import Forum from "./frontendPage/forumPage/forum";
+import DiscussionForum from "./frontendPage/forumPage/DiscussionForum";
+import SuccessStoriesForum from "./frontendPage/forumPage/SuccessStoriesForum.jsx";
 import Feedback from "./frontendPage/feedBackPage/feedBack";
 import Login from "./frontendPage/Authentication/login";
 import UserProfile from "./frontendPage/userProfile";
@@ -28,9 +32,13 @@ function App() {
           <Route path="/subsidies" element={<Subsidies />} />
           <Route path="/crop-insight" element={<CropInsight />} />
           <Route path="/crop-protect" element={<CropProtect />} />
+          <Route path="/fertilizer-info" element={<FertilizerInfo />} />
+          <Route path="/pesticide-info" element={<PesticideInfo />} />
           <Route path="/weather" element={<Weather />} />
           <Route path="/trade-hub" element={<TradeHub />} />
           <Route path="/forum" element={<Forum />} />
+          <Route path="/discussion" element={<DiscussionForum />} />
+          <Route path="/success-stories" element={<SuccessStoriesForum />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path='/userProfile' element={<UserProfile/>}/>
         </Routes>
