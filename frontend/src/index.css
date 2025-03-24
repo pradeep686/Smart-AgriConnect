@@ -1,5 +1,94 @@
 @import "tailwindcss";
 
+#formContainer {
+  background: white;
+  padding: 20px;
+  z-index: 1100; /* Increase to make sure it appears above */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centering */
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Blur effect overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+}
+
+/* Form container */
+.form-container {
+  background: white;
+  padding: 20px;
+  z-index: 1100;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s;
+}
+
+/* Show form when active */
+.form-container.show {
+  opacity: 9;
+  visibility: visible;
+}
+
+.backdrop-blur-lg {
+  backdrop-filter: none !important;
+}
+
+
+
+/* Floating Button */
+.floating-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: green;
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Post and Cancel Buttons */
+.post-btn {
+  background: green;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.cancel-btn {
+  background: red;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+}
+
 
 
 
@@ -36,11 +125,10 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
+
 
 h1 {
   font-size: 3.2em;
@@ -54,10 +142,13 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #0baaa7; 
+  background-color: #11c9b1; 
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
+
+
 
 button:hover {
   border-color: #646cff;
@@ -79,3 +170,15 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+#formContainer {
+  opacity: 1;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+#formContainer.show {
+  opacity: 1;
+  visibility: visible;
+}
+
