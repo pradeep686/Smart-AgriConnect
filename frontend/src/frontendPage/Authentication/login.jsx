@@ -49,8 +49,8 @@ const Login = ({ onClose, onSwitchToSignUp, onSwitchToReset }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('/images/login2.jpeg')" }}>
-      <div className="relative bg-white shadow-xl rounded-2xl w-96 border-2 border-green-500">
-        <div className="h-40 bg-cover bg-center rounded-t-2xl" style={{ backgroundImage: "url('/images/login.jpg')" }}></div>
+      <div className="relative bg-white shadow-xl rounded-2xl w-120 border-2 border-green-500">
+        <div className="h-50 bg-cover bg-center rounded-t-2xl" style={{ backgroundImage: "url('/images/login.jpg')" }}></div>
 
         <div className="p-8">
           <Link to="/" className="absolute top-3 right-3 bg-red-600 text-white w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-600 transition-all">
