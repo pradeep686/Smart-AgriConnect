@@ -57,6 +57,7 @@ const FeedbackPage = () => {
             <h2 className="text-3xl font-bold text-gray-800 text-center">Feedback</h2>
             <p className="text-gray-600 text-center mt-2">We value your feedback to improve our platform.</p>
             <div className="mt-4">
+
               <input 
                 type="text" 
                 placeholder="Your Name" 
@@ -64,6 +65,7 @@ const FeedbackPage = () => {
                 onChange={(e) => setName(e.target.value)}
                 className="w-full p-3 border-2 border-green-400 rounded-xl focus:ring-2  mb-4"
               />
+
               <input 
                 type="email" 
                 placeholder="Your Email" 
@@ -71,7 +73,8 @@ const FeedbackPage = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full p-3 border-2 border-green-400 rounded-xl focus:ring-2 mb-4"
               />
-              <div className="flex flex-wrap gap-2 mb-3">
+
+              <div className="flex flex-wrap gap-2 mb-3 background">
                 {categories.map((category) => (
                   <button
                     key={category}
@@ -82,12 +85,14 @@ const FeedbackPage = () => {
                   </button>
                 ))}
               </div>
+
               <textarea 
                 placeholder="Describe your issue or request..."
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 className="w-full p-3 border-2 border-green-400 rounded-xl focus:ring-2  mb-4"
               />
+              
    <div className="flex flex-col items-center justify-center px-10 py-4 bg-white-100">
       <h2 className="text-sm font-semibold mb-2 text-gray-700">We Want Your Feedback</h2>
 
