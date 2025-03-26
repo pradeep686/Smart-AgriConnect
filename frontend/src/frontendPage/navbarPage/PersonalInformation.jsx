@@ -11,6 +11,7 @@ function PersonalInformation() {
     district: "",
     state: "",
   });
+  const [editIndex, setEditIndex] = useState(null); // Track which address is being edited
 
   useEffect(() => {
     fetchAddresses();
@@ -23,12 +24,14 @@ function PersonalInformation() {
         console.error("No token found");
         return;
       }
-      
+
       const response = await axios.get("http://localhost:9009/userAddress/get", {
         headers: { Authorization: `Bearer ${token}` },
         withCredentials: true,
       });
-      setAddresses(response.data.data);
+
+      // Store only two addresses
+      setAddresses(response.data.data.slice(0, 2));
     } catch (error) {
       console.error("Error fetching addresses:", error.response?.data?.msg || error.message);
     }
@@ -46,35 +49,67 @@ function PersonalInformation() {
         console.error("No token found");
         return;
       }
-      
-      await axios.post("http://localhost:9009/userAddress/add", formData, {
-        headers: { Authorization: `Bearer ${token}` },
-        withCredentials: true,
-      });
+
+      if (editIndex !== null) {
+        // Update existing address
+        await axios.put(
+          `http://localhost:9009/userAddress/update/${addresses[editIndex]._id}`,
+          formData,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+            withCredentials: true,
+          }
+        );
+      } else {
+        // Add new address (if less than 2 addresses exist)
+        await axios.post("http://localhost:9009/userAddress/add", formData, {
+          headers: { Authorization: `Bearer ${token}` },
+          withCredentials: true,
+        });
+      }
+
       fetchAddresses();
+      setEditIndex(null);
+      setFormData({ doorNo: "", street: "", city: "", pincode: "", district: "", state: "" }); // Reset form
     } catch (error) {
-      console.error("Error adding address:", error.response?.data?.msg || error.message);
+      console.error("Error saving address:", error.response?.data?.msg || error.message);
     }
+  };
+
+  const handleEdit = (index) => {
+    setEditIndex(index);
+    setFormData(addresses[index]); // Load address data into form for editing
   };
 
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold">Profile</h1>
-      <form onSubmit={handleSubmit} className="mt-4">
-        <input type="text" name="doorNo" placeholder="Door No" onChange={handleChange} className="border p-2 m-2" required />
-        <input type="text" name="street" placeholder="Street" onChange={handleChange} className="border p-2 m-2" required />
-        <input type="text" name="city" placeholder="City" onChange={handleChange} className="border p-2 m-2" required />
-        <input type="text" name="pincode" placeholder="Pincode" onChange={handleChange} className="border p-2 m-2" required />
-        <input type="text" name="district" placeholder="District" onChange={handleChange} className="border p-2 m-2" required />
-        <input type="text" name="state" placeholder="State" onChange={handleChange} className="border p-2 m-2" required />
-        <button type="submit" className="bg-blue-500 text-white p-2 m-2">Add Address</button>
-      </form>
+
+      {(addresses.length < 2 || editIndex !== null) && (
+        <form onSubmit={handleSubmit} className="mt-4">
+          <input type="text" name="doorNo" value={formData.doorNo} placeholder="Door No" onChange={handleChange} className="border p-2 m-2" required />
+          <input type="text" name="street" value={formData.street} placeholder="Street" onChange={handleChange} className="border p-2 m-2" required />
+          <input type="text" name="city" value={formData.city} placeholder="City" onChange={handleChange} className="border p-2 m-2" required />
+          <input type="text" name="pincode" value={formData.pincode} placeholder="Pincode" onChange={handleChange} className="border p-2 m-2" required />
+          <input type="text" name="district" value={formData.district} placeholder="District" onChange={handleChange} className="border p-2 m-2" required />
+          <input type="text" name="state" value={formData.state} placeholder="State" onChange={handleChange} className="border p-2 m-2" required />
+          <button type="submit" className="bg-blue-500 text-white p-2 m-2">
+            {editIndex !== null ? "Update Address" : "Add Address"}
+          </button>
+        </form>
+      )}
+
       <h2 className="text-xl font-bold mt-6">Saved Addresses</h2>
       <ul>
         {addresses.length > 0 ? (
-          addresses.map((addr) => (
-            <li key={addr._id} className="border p-2 mt-2">
-              {`${addr.doorNo}, ${addr.street}, ${addr.city}, ${addr.pincode}, ${addr.district}, ${addr.state}`}
+          addresses.map((addr, index) => (
+            <li key={addr._id} className="border p-2 mt-2 flex justify-between">
+              <span>
+                {addr.doorNo}, {addr.street}, {addr.city}, {addr.pincode}, {addr.district}, {addr.state}
+              </span>
+              <button onClick={() => handleEdit(index)} className="bg-yellow-500 text-white p-1 ml-4">
+                Edit
+              </button>
             </li>
           ))
         ) : (
