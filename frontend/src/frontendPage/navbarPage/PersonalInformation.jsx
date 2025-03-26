@@ -31,7 +31,7 @@ function PersonalInformation() {
       });
 
       // Store only two addresses
-      setAddresses(response.data.data.slice(0, 2));
+      setAddresses(response.data.data.slice(0, 1));
     } catch (error) {
       console.error("Error fetching addresses:", error.response?.data?.msg || error.message);
     }
@@ -85,7 +85,7 @@ function PersonalInformation() {
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold">Profile</h1>
 
-      {(addresses.length < 2 || editIndex !== null) && (
+      {(addresses.length < 1 || editIndex !== null) && (
         <form onSubmit={handleSubmit} className="mt-4">
           <input type="text" name="doorNo" value={formData.doorNo} placeholder="Door No" onChange={handleChange} className="border p-2 m-2" required />
           <input type="text" name="street" value={formData.street} placeholder="Street" onChange={handleChange} className="border p-2 m-2" required />
@@ -121,3 +121,4 @@ function PersonalInformation() {
 }
 
 export default PersonalInformation;
+
