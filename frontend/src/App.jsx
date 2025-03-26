@@ -15,13 +15,12 @@ import DiscussionForum from "./frontendPage/forumPage/DiscussionForum";
 import SuccessStoriesForum from "./frontendPage/forumPage/SuccessStoriesForum.jsx";
 import Feedback from "./frontendPage/feedBackPage/feedBack";
 import Login from "./frontendPage/Authentication/login";
-import UserProfile from "./frontendPage/userProfile";
+import PersonalInformation from "./frontendPage/navbarPage/PersonalInformation.jsx";
 function App() {
   return (
     <Router>
       {/* Keep Navbar outside of Routes for global access */}
       <Navbar />
-
       <div className="flex-1 p-10 bg-gray-100 min-h-screen">
         <Routes>
           <Route path="/" element={<Navigate to="/homepage" replace />} />
@@ -40,7 +39,7 @@ function App() {
           <Route path="/discussion" element={<DiscussionForum />} />
           <Route path="/success-stories" element={<SuccessStoriesForum />} />
           <Route path="/feedback" element={<Feedback />} />
-          <Route path='/userProfile' element={<UserProfile/>}/>
+          <Route path="/personal-info" element={<PersonalInformation />} />
         </Routes>
       </div>
     </Router>

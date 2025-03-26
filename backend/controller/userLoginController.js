@@ -102,4 +102,14 @@ const forgotPassword = async (req, res) => {
     }
 };
 
-module.exports = { create, login, me, forgotPassword };
+const resetPassword=async(req,res)=>{
+        try{
+            const {email}=req.body;
+            
+        }
+        catch(e){
+            res.status(500).json({msg:"Internal Server error"});
+        }
+}
+
+module.exports = { create, login, me, forgotPassword,resetPassword };

@@ -70,6 +70,7 @@ const getAddress = async (req, res) => {
         }
 
         const addresses = await addressSchema.find({ userId });
+        console.log(addAddress)
 
         return res.status(200).json({ success: true, data: addresses });
 
