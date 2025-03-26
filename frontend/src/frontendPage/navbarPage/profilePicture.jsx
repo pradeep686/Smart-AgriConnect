@@ -1,8 +1,17 @@
 import React from "react";
-import { LogIn } from "lucide-react";
-import { Link } from "react-router-dom";
+import { LogIn, LogOut, User } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 
 const ProfilePicture = ({ isDropdownOpen, toggleDropdown, setIsDropdownOpen }) => {
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // Remove token
+    setIsDropdownOpen(false);
+    navigate("/login"); // Redirect to login page
+  };
+
   return (
     <div className="relative">
       {/* Profile Picture Button */}
@@ -20,13 +29,35 @@ const ProfilePicture = ({ isDropdownOpen, toggleDropdown, setIsDropdownOpen }) =
       {/* Dropdown Menu */}
       {isDropdownOpen && (
         <div className="absolute right-0 mt-3 w-48 bg-white rounded-lg shadow-lg border-gray-200 p-3 z-50">
-         <Link
-  to="/login"
-  onClick={() => setIsDropdownOpen(false)}
-  className="flex items-center gap-2 px-7 py-2 !text-green-600 font-semibold"
->
-  <LogIn className="w-4 h-4" /> Login
-</Link>
+          {token ? (
+            <>
+              {/* User Info */}
+              <Link
+                to="/personal-info"
+                onClick={() => setIsDropdownOpen(false)}
+                className="flex items-center gap-2 px-7 py-2 text-green-600 font-semibold"
+              >
+                <User className="w-4 h-4" /> User Info
+              </Link>
+
+              {/* Logout */}
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-2 px-7 py-2 text-red-600 font-semibold w-full text-left"
+              >
+                <LogOut className="w-4 h-4" /> Logout
+              </button>
+            </>
+          ) : (
+            /* Login */
+            <Link
+              to="/login"
+              onClick={() => setIsDropdownOpen(false)}
+              className="flex items-center gap-2 px-7 py-2 text-green-600 font-semibold"
+            >
+              <LogIn className="w-4 h-4" /> Login
+            </Link>
+          )}
         </div>
       )}
     </div>
