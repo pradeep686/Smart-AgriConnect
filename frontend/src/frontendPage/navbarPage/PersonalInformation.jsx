@@ -31,7 +31,7 @@ function PersonalInformation() {
       });
 
       // Store only two addresses
-      setAddresses(response.data.data.slice(0, 1));
+      setAddresses(response.data.data.slice(0, 2));
     } catch (error) {
       console.error("Error fetching addresses:", error.response?.data?.msg || error.message);
     }
@@ -53,7 +53,7 @@ function PersonalInformation() {
       if (editIndex !== null) {
         // Update existing address
         await axios.put(
-          `http://localhost:9009/userAddress/update/${addresses[editIndex]._id}`,
+          `http://localhost:9009/userAddress/edit/${addresses[editIndex]._id}`,
           formData,
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -62,10 +62,15 @@ function PersonalInformation() {
         );
       } else {
         // Add new address (if less than 2 addresses exist)
-        await axios.post("http://localhost:9009/userAddress/add", formData, {
-          headers: { Authorization: `Bearer ${token}` },
-          withCredentials: true,
-        });
+        if (addresses.length < 2) {
+          await axios.post("http://localhost:9009/userAddress/add", formData, {
+            headers: { Authorization: `Bearer ${token}` },
+            withCredentials: true,
+          });
+        } else {
+          console.error("Cannot add more than two addresses.");
+          return;
+        }
       }
 
       fetchAddresses();
@@ -79,6 +84,25 @@ function PersonalInformation() {
   const handleEdit = (index) => {
     setEditIndex(index);
     setFormData(addresses[index]); // Load address data into form for editing
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        console.error("No token found");
+        return;
+      }
+
+      await axios.delete(`http://localhost:9009/userAddress/delete/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+        withCredentials: true,
+      });
+
+      fetchAddresses(); // Refresh addresses after deletion
+    } catch (error) {
+      console.error("Error deleting address:", error.response?.data?.msg || error.message);
+    }
   };
 
   return (
@@ -107,9 +131,14 @@ function PersonalInformation() {
               <span>
                 {addr.doorNo}, {addr.street}, {addr.city}, {addr.pincode}, {addr.district}, {addr.state}
               </span>
-              <button onClick={() => handleEdit(index)} className="bg-yellow-500 text-white p-1 ml-4">
-                Edit
-              </button>
+              <div>
+                <button onClick={() => handleEdit(index)} className="bg-yellow-500 text-white p-1 ml-4">
+                  Edit
+                </button>
+                <button onClick={() => handleDelete(addr._id)} className="bg-red-500 text-white p-1 ml-2">
+                  Delete
+                </button>
+              </div>
             </li>
           ))
         ) : (
@@ -121,4 +150,3 @@ function PersonalInformation() {
 }
 
 export default PersonalInformation;
-
