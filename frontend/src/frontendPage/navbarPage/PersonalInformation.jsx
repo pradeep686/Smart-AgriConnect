@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { FaEdit } from "react-icons/fa";
+import { Trash2 } from "lucide-react";
+
 import axios from "axios";
 
 const API_BASE_URL = "http://localhost:9009/userAddress";
 
-function App() {
+function PersonalInformation () {
     const [formData, setFormData] = useState({
         fullName: "",
         phoneNumber: "",
@@ -114,55 +117,120 @@ function App() {
         }
     };
 
-    return (
-        <div style={{ maxWidth: "600px", margin: "auto", padding: "20px" }}>
-            <h2>{editMode ? "Edit Personal Info" : "Add Personal Info"}</h2>
-            <form>
-                <input type="text" name="fullName" placeholder="Full Name" value={formData.fullName} onChange={handleChange} required />
-                <input type="text" name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleChange} required />
-                <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-                <input type="date" name="dateOfBirth" placeholder="Date of Birth" value={formData.dateOfBirth} onChange={handleChange} required />
-                <input type="text" name="gender" placeholder="Gender" value={formData.gender} onChange={handleChange} />
-                <input type="text" name="village" placeholder="Village" value={formData.village} onChange={handleChange} />
-                <input type="text" name="taluk" placeholder="Taluk" value={formData.taluk} onChange={handleChange} />
-                <input type="text" name="district" placeholder="District" value={formData.district} onChange={handleChange} />
-                <input type="text" name="state" placeholder="State" value={formData.state} onChange={handleChange} />
-                <input type="text" name="pinCode" placeholder="Pin Code" value={formData.pinCode} onChange={handleChange} />
-                <input type="text" name="farmSize" placeholder="Farm Size" value={formData.farmSize} onChange={handleChange} />
-                <input type="text" name="soilType" placeholder="Soil Type" value={formData.soilType} onChange={handleChange} />
-                <input type="text" name="currentCrops" placeholder="Current Crops" value={formData.currentCrops} onChange={handleChange} />
-                <input type="text" name="animalFarm" placeholder="Animal Farm" value={formData.animalFarm} onChange={handleChange} />
-                <br />
-                {editMode ? (
-                    <button type="button" onClick={handleEdit}>Update</button>
-                ) : (
-                    <button type="button" onClick={handleAdd}>Add</button>
-                )}
-            </form>
 
-            {personalInfo && (
-                <div>
-                    <h3>Saved Information:</h3>
-                    <p><strong>Name:</strong> {personalInfo.fullName}</p>
-                    <p><strong>Phone:</strong> {personalInfo.phoneNumber}</p>
-                    <p><strong>Email:</strong> {personalInfo.email}</p>
-                    <p><strong>DOB:</strong> {personalInfo.dateOfBirth}</p>
-                    <p><strong>Gender:</strong> {personalInfo.gender}</p>
-                    <p><strong>Village:</strong> {personalInfo.village}</p>
-                    <p><strong>Taluk:</strong> {personalInfo.taluk}</p>
-                    <p><strong>District:</strong> {personalInfo.district}</p>
-                    <p><strong>State:</strong> {personalInfo.state}</p>
-                    <p><strong>Pin Code:</strong> {personalInfo.pinCode}</p>
-                    <p><strong>Farm Size:</strong> {personalInfo.farmSize}</p>
-                    <p><strong>Soil Type:</strong> {personalInfo.soilType}</p>
-                    <p><strong>Current Crops:</strong> {personalInfo.currentCrops}</p>
-                    <p><strong>Animal Farm:</strong> {personalInfo.animalFarm}</p>
-                    <button onClick={() => setEditMode(true)}>Edit</button>
-                    <button onClick={handleDelete}>Delete</button>
-                </div>
-            )}
+    return (
+        <div style={{ display: "flex", height: "160vh", backgroundColor: "#f8f9fa" }}>
+            <div className="absolute inset-0  ml-54  min-h-screen">
+            
+            {/* Main Content */}
+            <div style={{ flex: 1, padding: "40px", borderRadius: "10px", backgroundColor: "white", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", margin: "40px" }}>
+                <h2 style={{ textAlign: "center", marginBottom: "20px", fontSize: "24px", fontWeight: "bold" }}>{editMode ? "📝 Edit Personal Information" : "📝 Personal Information"}</h2>
+                {editMode || !personalInfo ? (
+                    <form style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "15px" }}>
+                        {Object.keys(formData)
+                        .map((key) => (
+                            <input
+                                key={key}
+                                type={key === "email" ? "email" : key === "dateOfBirth" ? "date" : "text"}
+                                name={key}
+                                placeholder={key.replace(/([A-Z])/g, " $1").trim()}
+                                value={formData[key]}
+                                onChange={handleChange}
+                                style={{ padding: "8px", borderRadius: "10px", border: "2px solid #ccc" }}
+                                required
+                            />
+                        ))}
+                        <button type="button" style={{ gridColumn: "span 2", padding: "12px", backgroundColor: "#008bff", color: "white", border: "none", borderRadius: "5px", cursor: "pointer" }} onClick={editMode ? handleEdit : handleAdd}>
+                            {editMode ? "Update" : "Add"}
+                        </button>
+                    </form>
+                ) : (
+                    <div style={{ marginTop: "20px", padding: "20px", border: "1px solid #ddd", borderRadius: "5px", backgroundColor: "#f8f9fa" }}>
+                        <h3 style={{ marginBottom: "15px" }}>💬 Saved Information: </h3>
+
+                        <button 
+    style={{ 
+        marginRight: "10px", 
+        paddingLeft: "10px", 
+        marginLeft: "1020px", 
+        backgroundColor: "#008bff", 
+        color: "white", 
+        border: "none", 
+        borderRadius: "5px", 
+        cursor: "pointer", 
+        display: "flex", 
+        alignItems: "center", 
+        gap: "5px" // Adds spacing between text and icon
+    }} 
+    onClick={() => setEditMode(true)}
+>
+    <FaEdit /> Edit
+</button>
+{Object.entries(personalInfo)
+  .filter(([key]) => !["_id", "userId", "__v"].includes(key)) // Exclude these fields
+  .map(([key, value]) => (
+    <div
+      key={key}
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        borderBottom: "1px solid #ddd",
+        padding: "10px 0",
+      }}
+    >
+      {/* Left-aligned Key */}
+      <h2 style={{ flex: 1, textAlign: "left", margin: 0 }}>
+        <strong>
+          {key
+            .replace(/([A-Z])/g, " $1")
+            .trim()
+            .charAt(0)
+            .toUpperCase() +
+            key.replace(/([A-Z])/g, " $1").trim().slice(1)}
+          :
+        </strong>
+      </h2>
+
+      {/* Centered Value */}
+      <h2 style={{ flex: 1, textAlign: "center", margin: 0 }}>{value}</h2>
+    </div>
+  ))}
+<br />
+                        
+<button 
+  style={{ 
+    display: "flex", 
+    alignItems: "center", 
+    gap: "8px",  /* Adjust space between icon and text */
+    padding: "10px", 
+    backgroundColor: "red", 
+    color: "white", 
+    border: "none", 
+    borderRadius: "7px", 
+    cursor: "pointer"
+  }} 
+  onClick={handleDelete}
+>
+  <Trash2 size={24} color="white" />
+  <span>Delete</span>
+</button>
+</div>
+        )}
+            </div>
+            </div>
         </div>
     );
 }
 
-export default App;
+
+
+
+
+export default PersonalInformation ;
+
+
+
+
+
+

@@ -9,7 +9,7 @@ const HomePage = () => {
     <div className="relative  min-h-screen bg-gray-100">
       {/* Full-width Image Section */}
       <div 
-        className="relative w-326 h-98  bg-cover bg-center" 
+        className="relative w-324.3 h-98  bg-cover bg-center" 
         style={{ backgroundImage: "url('/images/main1.webp')" }}
       >
         {/* Overlay for better text visibility */}

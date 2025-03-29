@@ -38,53 +38,59 @@ export default function Weather() {
   }
 
   useEffect(() => {
-    fetchWeatherData("bangalore");
+    fetchWeatherData("New York");
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-blue-100 p-6">
-      <div className="bg-white p-6 rounded-2xl shadow-md w-full max-w-md">
-        <div className="flex space-x-2 mb-4">
-          <input
-            type="text"
-            placeholder="Enter City Name"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-          <button
-            onClick={handleSearch}
-            className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-          >
-            Search
-          </button>
+    <div className="absolute inset-0 ml-54 min-h-screen bg-cover bg-center text-white p-6" style={{ backgroundImage: "url('/images/weather.jpg')" }}>
+      <div className="flex items-center justify-center min-h-screen">
+        {/* Search Bar Section */}
+        <div className="w-1/3 p-6">
+          <div className="flex space-x-2 mb-4">
+            <input
+              type="text"
+              placeholder="Enter Location"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-white text-2xl"
+            />
+            <button
+              onClick={handleSearch}
+              className="px-4 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+            >
+              Search
+            </button>
+          </div>
         </div>
-        {loading ? (
-          <div className="text-center text-gray-600">Loading...</div>
-        ) : (
-          weatherData && (
-            <div className="text-center">
-              <h2 className="text-2xl font-bold">
-                {weatherData.name}, <span className="text-lg">{weatherData.sys?.country}</span>
-              </h2>
-              <div className="text-gray-600 text-sm">{getCurrentDate()}</div>
-              <div className="text-4xl font-semibold my-3">{weatherData.main?.temp}°C</div>
-              <p className="text-lg capitalize text-gray-700">
-                {weatherData.weather?.[0]?.description || ""}
-              </p>
-              <div className="flex justify-around mt-4 text-gray-600">
-                <div>
-                  <p className="text-xl font-medium">{weatherData.wind?.speed} m/s</p>
-                  <p>Wind Speed</p>
-                </div>
-                <div>
-                  <p className="text-xl font-medium">{weatherData.main?.humidity}%</p>
-                  <p>Humidity</p>
+        {/* Weather Data Section */}
+        <div className="w-2/3 p-6 text-center">
+          {loading ? (
+            <div className="text-center text-gray-300">Loading...</div>
+          ) : (
+            weatherData && (
+              <div className="backdrop-blur-lg p-6 rounded-lg">
+                <h2 className="text-7xl font-bold">
+                  {weatherData.name}, <span className="text-7xl">{weatherData.sys?.country}</span>
+                </h2>
+                <div className=" text-2xl my-2 mb-3">{getCurrentDate()}</div>
+                <div className="text-6xl font-semibold my-3">{weatherData.main?.temp}°C</div>
+                <p className="text-3xl capitalize text-gray-100">
+                  {weatherData.weather?.[0]?.description || ""}
+                </p>
+                <div className="flex justify-around mt-6 text-gray-100">
+                  <div>
+                    <p className="text-4xl font-medium">{weatherData.wind?.speed} m/s</p>
+                    <p>Wind Speed</p>
+                  </div>
+                  <div>
+                    <p className="text-4xl font-medium">{weatherData.main?.humidity}%</p>
+                    <p>Humidity</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          )
-        )}
+            )
+          )}
+        </div>
       </div>
     </div>
   );
