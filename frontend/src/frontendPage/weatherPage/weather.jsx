@@ -38,25 +38,28 @@ export default function Weather() {
   }
 
   useEffect(() => {
-    fetchWeatherData("New York");
+    fetchWeatherData("Erode");
   }, []);
 
   return (
-    <div className="absolute inset-0 ml-54 min-h-screen bg-cover bg-center text-white p-6" style={{ backgroundImage: "url('/images/weather.jpg')" }}>
+    <div className="absolute inset-0 ml-54  bg-cover bg-center text-white p-0" style={{ backgroundImage: "url('/images/weather.jpg')" }}>
+      
       <div className="flex items-center justify-center min-h-screen">
         {/* Search Bar Section */}
-        <div className="w-1/3 p-6">
+        <div className="w-1/3 p-2 ml-20">
           <div className="flex space-x-2 mb-4">
-            <input
-              type="text"
-              placeholder="Enter Location"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-white text-2xl"
-            />
+          <input
+  type="text"
+  placeholder="Enter Location"
+  value={search}
+  onChange={(e) => setSearch(e.target.value)}
+  className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2  text-2xl placeholder-white opacity-400"
+/>
+
+
             <button
               onClick={handleSearch}
-              className="px-4 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+              className="px-4 py-3 text-white rounded-lg hover:bg-blue-600"
             >
               Search
             </button>
