@@ -62,16 +62,18 @@ const FertilizerInfo = () => {
       🌱 Fertilizer Information
     </h2>
 
-      <div className="flex justify-end mt-4">
-  <div className="relative w-80">
+    <div className="fixed top-18 left-3/4 transform -translate-x-1/2 w-[90%] max-w-md z-50">
+  <div className="relative w-full">
     <input
       type="text"
-        placeholder="Search Fertilizer..."
+      placeholder="Search Fertilizer..."
       className="w-full bg-white/30 backdrop-blur-lg text-gray-800 placeholder-gray-600 border border-gray-300 rounded-full py-3 pl-5 pr-12 focus:outline-none focus:ring-2 focus:ring-gray-500 shadow-lg transition-all duration-300"
       value={search}
-        onChange={(e) => setSearch(e.target.value)}
-   />
-    <button className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-gray-700 to-black p-3 rounded-full flex items-center justify-center hover:scale-105 transition-all duration-300">
+      onChange={(e) => setSearch(e.target.value)}
+    />
+    <button
+      className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-gray-700 to-black p-2 rounded-full flex items-center justify-center hover:scale-105 transition-all duration-300"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -84,7 +86,8 @@ const FertilizerInfo = () => {
       </svg>
     </button>
   </div>
-</div><br/><br/>
+</div>
+<br/><br/>
       <div className="grid grid-cols-1 w-md:grid-cols-2 gap-4">
         {filteredFertilizers.map((fertilizer, index) => (
           <motion.div
