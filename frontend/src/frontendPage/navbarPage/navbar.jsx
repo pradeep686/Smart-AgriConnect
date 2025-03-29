@@ -21,12 +21,12 @@ const Navbar = () => {
   return (
     <>
       {/* Sidebar Toggle Button */}
-      <button
+      {/* <button
         onClick={toggleSidebar}
         className="fixed top-5 left-2 z-50 bg-green-700 text-white p-3 rounded-lg shadow-lg focus:outline-none"
       >
         {isOpen ? "✖" : "≡"}
-      </button>
+      </button> */}
 
       {/* Sidebar Navigation */}
       <motion.div
