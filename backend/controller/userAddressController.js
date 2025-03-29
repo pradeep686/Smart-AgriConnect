@@ -1,103 +1,91 @@
-const addressSchema = require('../models/userAddressModel');
+const personalInfoSchema = require('../models/userAddressModel');
 
-const addAddress = async (req, res) => {
+const addPersonalInfo = async (req, res) => {
     try {
         if (!req.user || !req.user.id) {
             return res.status(401).json({ msg: "Unauthorized access" });
         }
 
-        const existingAddress = await addressSchema.findOne({ userId: req.user.id });
-        if (existingAddress) {
-            return res.status(400).json({ msg: "Address already added" });
+        const existingInfo = await personalInfoSchema.findOne({ userId: req.user.id });
+        if (existingInfo) {
+            return res.status(400).json({ msg: "Personal information already exists" });
         }
 
-        const { doorNo, street, city, pincode, district, state } = req.body;
-
-        if (!doorNo || !street || !city || !pincode || !district || !state) {
-            return res.status(400).json({ msg: "Please enter all fields" });
-        }
-
-        const newAddress = await addressSchema.create({
+        const newInfo = await personalInfoSchema.create({
             userId: req.user.id,
-            doorNo,
-            street,
-            city,
-            pincode,
-            district,
-            state
+            ...req.body
         });
 
-        return res.status(201).json({ msg: "Address added successfully", data: newAddress });
+        return res.status(201).json({ msg: "Personal information added successfully", data: newInfo });
 
     } catch (e) {
         res.status(500).json({ msg: e.message });
     }
 };
 
-const editAddress = async (req, res) => {
+const editPersonalInfo = async (req, res) => {
     try {
-        const { addressId } = req.params;
-        const { doorNo, street, city, pincode, district, state } = req.body;
+        const { infoId } = req.params;
 
-        if (!addressId) {
-            return res.status(400).json({ msg: "Address ID is required" });
+        if (!infoId) {
+            return res.status(400).json({ msg: "Information ID is required" });
         }
 
-        const address = await addressSchema.findOne({ _id: addressId, userId: req.user.id });
+        const info = await personalInfoSchema.findOne({ _id: infoId, userId: req.user.id });
 
-        if (!address) {
-            return res.status(404).json({ msg: "Address not found" });
+        if (!info) {
+            return res.status(404).json({ msg: "Personal information not found" });
         }
 
-        const updatedAddress = await addressSchema.findByIdAndUpdate(
-            addressId,
-            { doorNo, street, city, pincode, district, state },
-            { new: true }
-        );
+        const updatedInfo = await personalInfoSchema.findByIdAndUpdate(infoId, req.body, { new: true });
 
-        return res.status(200).json({ msg: "Address updated successfully", data: updatedAddress });
+        return res.status(200).json({ msg: "Personal information updated successfully", data: updatedInfo });
 
     } catch (e) {
         res.status(500).json({ msg: e.message });
     }
 };
 
-const getAddress = async (req, res) => {
+const getPersonalInfo = async (req, res) => {
     try {
         if (!req.user || !req.user.id) {
             return res.status(401).json({ msg: "Unauthorized" });
         }
 
-        const addresses = await addressSchema.find({ userId: req.user.id });
+        const info = await personalInfoSchema.findOne({ userId: req.user.id });
 
-        return res.status(200).json({ success: true, data: addresses });
+        if (!info) {
+            return res.status(404).json({ msg: "Personal information not found" });
+        }
+
+        return res.status(200).json({ success: true, data: info });
 
     } catch (e) {
         res.status(500).json({ msg: e.message });
     }
 };
 
-const deleteAddress = async (req, res) => {
+const deletePersonalInfo = async (req, res) => {
     try {
-        const { addressId } = req.params;
+        const { infoId } = req.params;
 
-        if (!addressId) {
-            return res.status(400).json({ msg: "Address ID is required" });
+        if (!infoId) {
+            return res.status(400).json({ msg: "Information ID is required" });
         }
 
-        const address = await addressSchema.findOne({ _id: addressId, userId: req.user.id });
+        const info = await personalInfoSchema.findOne({ _id: infoId, userId: req.user.id });
 
-        if (!address) {
-            return res.status(404).json({ msg: "Address not found" });
+        if (!info) {
+            return res.status(404).json({ msg: "Personal information not found" });
         }
 
-        await addressSchema.findByIdAndDelete(addressId);
+        await personalInfoSchema.findByIdAndDelete(infoId);
 
-        return res.status(200).json({ msg: "Address deleted successfully" });
+        return res.status(200).json({ msg: "Personal information deleted successfully" });
 
     } catch (e) {
         res.status(500).json({ msg: e.message });
     }
 };
 
-module.exports = { addAddress, editAddress, getAddress, deleteAddress };
+module.exports = { addPersonalInfo, editPersonalInfo, getPersonalInfo, deletePersonalInfo };
