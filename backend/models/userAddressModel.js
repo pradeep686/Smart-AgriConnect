@@ -1,29 +1,64 @@
-const mongoose=require('mongoose')
+const mongoose = require('mongoose');
 
-const schema=new mongoose.Schema({
-    userId:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"userLogin",
-        required:"true"
+const schema = new mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "userLogin",
+        required: true
     },
-    doorNo:{
-        type:String,
+    fullName: {
+        type: String,
+        required: true
     },
-    street:{
-        type:String,
+    phoneNumber: {
+        type: String,
+        required: true
     },
-    city:{
-        type:String,
+    email: {
+        type: String,
+        required: true
     },
-    pincode:{
-        type:String
+    dateOfBirth: {
+        type: String,
+        required: true
     },
-    district:{
-        type:String
+    gender: {
+        type: String,
+        required: true
     },
-    state:{
-        type:String
+    village: {
+        type: String
+    },
+    taluk: {
+        type: String
+    },
+    district: {
+        type: String,
+        required: true
+    },
+    state: {
+        type: String,
+        required: true
+    },
+    pinCode: {
+        type: String,
+        required: true
+    },
+    farmSize: {
+        type: String,
+        required: true
+    },
+    soilType: {
+        type: String,
+        required: true
+    },
+    currentCrops: {
+        type: String,
+        required: true
+    },
+    animalFarm: {
+        type: String
     }
-})
+});
 
-module.exports=mongoose.model('adress',schema);
+module.exports = mongoose.model('PersonalInformation', schema);
