@@ -4,7 +4,9 @@ import SignUpPage from "./frontendPage/Authentication/SignUpPage";
 import ResetPasswordPage from "./frontendPage/Authentication/ResetPasswordPage";
 import Navbar from "./frontendPage/navbarPage/navbar";
 import Subsidies from "./frontendPage/subsidiesPage/subsidies";
+import SubsidiesInfo from "./frontendPage/subsidiesPage/SubsidiesInfo.jsx";
 import CropInsight from "./frontendPage/cropInsigthtPage/cropInsight";
+import CropInfo from "./frontendPage/cropInsigthtPage/cropInfo.jsx";
 import CropProtect from "./frontendPage/cropProtectPage/cropProtect";
 import PesticideInfo from "./frontendPage/cropProtectPage/pesticide.jsx";
 import FertilizerInfo from "./frontendPage/cropProtectPage/fertilizer.jsx";
@@ -43,7 +45,9 @@ function AppContent() {
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route path="/subsidies" element={<Subsidies />} />
+          <Route path="/subsidies-info" element={<SubsidiesInfo />} />
           <Route path="/crop-insight" element={<CropInsight />} />
+          <Route path="/crop-info" element={<CropInfo />} />
           <Route path="/crop-protect" element={<CropProtect />} />
           <Route path="/fertilizer-info" element={<FertilizerInfo />} />
           <Route path="/pesticide-info" element={<PesticideInfo />} />

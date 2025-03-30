@@ -62,7 +62,7 @@ function AdminDashboard() {
         {/* Return Home Button */}
         {/* Return Home Button */}
 <motion.button
-  className="bg-yellow-500 text-white font-semibold !py-2 !px-8 rounded-full shadow-lg transition-transform transform hover:scale-101 !hover:bg-yellow-600 flex items-center justify-center gap-3 absolute bottom-6 left-1/2 -translate-x-1/2"
+  className="!bg-yellow-500 text-white font-semibold !py-2 !px-8 rounded-full shadow-lg transition-transform transform hover:scale-101 !hover:bg-yellow-600 flex items-center justify-center gap-3 absolute bottom-6 left-1/2 -translate-x-1/2"
   onClick={() => navigate("/")}
   whileHover={{ y: -3 }}
   whileTap={{ scale: 0.9 }}

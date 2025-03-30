@@ -1,7 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const CropInsight = () => {
+  const navigate = useNavigate();
+
+  const handleCategoryClick = (category) => {
+    navigate("/crop-info", { state: { category } });
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 flex">
       <div className="ml-64 p-8 w-full">
@@ -23,11 +30,10 @@ const CropInsight = () => {
               title={crop.title} 
               description={crop.description} 
               image={crop.image} 
-              onClick={() => alert(`${crop.title} clicked!`)}
+              onClick={() => handleCategoryClick(crop.title)}
             />
           ))}
         </motion.div>
-
       </div>
     </div>
   );
