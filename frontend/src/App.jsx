@@ -16,10 +16,24 @@ import SuccessStoriesForum from "./frontendPage/forumPage/SuccessStoriesForum.js
 import Feedback from "./frontendPage/feedBackPage/feedBack";
 import Login from "./frontendPage/Authentication/login";
 import PersonalInformation from "./frontendPage/navbarPage/PersonalInformation.jsx";
-function App() {
+
+// Admin Pages
+import AdminDashboard from "../administrator Page/dashboard.jsx";
+import AddCropInsight from "../administrator Page/addCropInsight.jsx";
+import AddFertilizer from "../administrator Page/addFertilizer.jsx";
+import AddPesticides from "../administrator Page/addPesticides.jsx";
+import AddSubsidies from "../administrator Page/addSubsidies.jsx";
+
+// ✅ Protected Admin Route Component
+function ProtectedAdminRoute({ element }) {
+  const isAdmin = localStorage.getItem("role") === "admin"; // Check stored role
+
+  return isAdmin ? element : <Navigate to="/login" replace />;
+}
+
+function AppContent() {
   return (
-    <Router>
-      {/* Keep Navbar outside of Routes for global access */}
+    <>
       <Navbar />
       <div className="flex-1 p-10 bg-gray-100 min-h-screen">
         <Routes>
@@ -42,6 +56,26 @@ function App() {
           <Route path="/personal-info" element={<PersonalInformation />} />
         </Routes>
       </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        {/* ✅ Protected Admin Routes */}
+        <Route path="/dashboard/*" element={<ProtectedAdminRoute element={<AdminDashboard />} />}>
+
+          <Route path="add-subsidies" element={<AddSubsidies />} />
+          <Route path="add-crop-insight" element={<AddCropInsight />} />
+          <Route path="add-fertilizer" element={<AddFertilizer />} />
+          <Route path="add-pesticide" element={<AddPesticides />} />
+        </Route>
+
+        {/* Main Application Routes */}
+        <Route path="/*" element={<AppContent />} />
+      </Routes>
     </Router>
   );
 }

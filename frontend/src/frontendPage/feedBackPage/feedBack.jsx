@@ -79,7 +79,7 @@ const FeedbackPage = () => {
                   <button
                     key={category}
                     onClick={() => setSelectedCategory(category)}
-                    className={`px-4 py-2 rounded-full border-2 text-black transition-all duration-300 ${selectedCategory === category ? 'bg-orange-500 text-white' : 'bg-white border-gray-400'}`}
+                    className={`px-4 py-2 rounded-full !border-2 text-black transition-all duration-300 ${selectedCategory === category ? '!bg-cyan-500 text-white' : ' !border-green-400'}`}
                   >
                     {category}
                   </button>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
-const Login = ({ onClose, onSwitchToSignUp, onSwitchToReset }) => {
+const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
@@ -17,18 +17,27 @@ const Login = ({ onClose, onSwitchToSignUp, onSwitchToReset }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // ✅ Check for Admin Login
+    if (formData.email === "admin@gmail.com" && formData.password === "admin") {
+      alert("Admin login successful");
+      localStorage.setItem("role", "admin"); // ✅ Store role in localStorage
+      navigate("/dashboard", { replace: true }); // ✅ Redirect to Admin Dashboard
+      return;
+    }
+
     try {
       const log = await axios.post('http://localhost:9009/userLogin/login', formData);
       
       if (log.data.error) {
-        alert(log.data.error);  
+        alert(log.data.error);
         if (log.data.error.includes("User not found")) {
           navigate('/signup');
         }
       } else {
         localStorage.setItem('token', log.data.token);
         alert('Login successful');
-        navigate('/');
+        navigate('/homepage', { replace: true }); // ✅ Redirect user to home page
       }
     } catch (error) {
       if (error.response) {
@@ -50,7 +59,7 @@ const Login = ({ onClose, onSwitchToSignUp, onSwitchToReset }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('/images/login2.jpeg')" }}>
       <div className="relative bg-white shadow-xl rounded-2xl w-120 border-2 border-green-500">
-        <div className="h-50 bg-cover bg-center rounded-t-2xl" style={{ backgroundImage: "url('/images/login.jpg')" }}></div>
+        <div className="h-50 bg-cover bg-center rounded-t-2xl z-30" style={{ backgroundImage: "url('/images/login.jpg')"}}></div>
 
         <div className="p-8">
           <Link to="/" className="absolute top-3 right-3 bg-red-600 text-white w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-600 transition-all">
@@ -73,10 +82,12 @@ const Login = ({ onClose, onSwitchToSignUp, onSwitchToReset }) => {
           </form>
 
           <p className="mt-5 text-green-700 text-center">
-             <Link to='/signup' className="text-green-600 cursor-pointer font-bold hover:underline"><p className="text-green-600"><span className="text-md text-black">Don't have an account?</span>Sign Up</p></Link>
+             <Link to='/signup' className="!text-green-600 cursor-pointer font-bold hover:underline">
+               <span className="text-md text-black">Don't have an account?</span> Sign Up
+             </Link>
           </p>
-          <p className="mt-3 ttext-green-600 text-center">
-            <Link to='/reset-password' className="text-red-600 cursor-pointer font-bold hover:underline"><p className="text-green-600">Reset Password?</p></Link>
+          <p className="mt-3 text-green-600 text-center">
+            <Link to='/reset-password' className="!text-red-600 !cursor-pointer !font-bold !hover:underline">Reset Password?</Link>
           </p>
         </div>
       </div>

@@ -52,7 +52,7 @@ const Navbar = () => {
               <li key={index}>
                 <Link
                   to={`/${item}`}
-                  className="block py-3 text-lg font-semibold hover:scale-110 hover:text-yellow-300 capitalize"
+                  className="block py-3 text-lg font-semibold hover:scale-99 !hover:text-white-300 capitalize"
                 >
                   {item.replace("-", " ")}
                 </Link>

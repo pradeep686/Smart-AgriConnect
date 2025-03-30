@@ -54,14 +54,14 @@ const ProfilePicture = ({ isDropdownOpen, toggleDropdown, setIsDropdownOpen }) =
   }, [isDropdownOpen]);
 
   return (
-    <div className="relative">
+    <div className="relative ">
       {/* Profile Picture Button */}
       <div
         onClick={() => {
           toggleDropdown();
           if (closeTimeout) clearTimeout(closeTimeout); // Reset timer on click
         }}
-        className="w-12 h-12 rounded-full border-2 border-green-700 overflow-hidden shadow-md cursor-pointer"
+        className="w-12 h-12 rounded-full border-2 border-green-700 overflow-hidden shadow-md cursor-pointer "
       >
         <img src="/images/profile.webp" alt="User Profile" className="w-full h-full rounded-full" />
       </div>
