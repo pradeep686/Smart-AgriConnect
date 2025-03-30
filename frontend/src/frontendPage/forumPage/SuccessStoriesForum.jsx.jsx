@@ -174,17 +174,19 @@ Its my farming way proves that adopting modern precision farming methods leads t
     <div className="w-full max-w-5xl mx-auto px-4">
 {/* Search Bar */}
 
-<h2
-      style={{
-        fontSize: "24px",
-        fontWeight: "bold",
-        color: "#333",
-        padding: "10px",
-        display: "inline-block",
-      }}
-    >
-      🏆 Success Stories
-    </h2>
+     <div className="mb-4">
+          <h2 className="text-3xl font-extrabold text-gray-900 flex items-center gap-2">
+          🏆 Success Stories
+          </h2>
+          <motion.p
+            className="mt-2 text-sm font-bold text-pink-600"
+            initial={{ x: -10, opacity: 0 }}
+            animate={{ x: 10, opacity: 1 }}
+            transition={{ repeat: Infinity, repeatType: "reverse", duration: 5 }}
+          >
+           Turning Challenges into Opportunities – Stories of Growth and Success!
+          </motion.p>
+        </div>
 
 <div className="flex justify-end mt-4">
   <div className="relative w-80">

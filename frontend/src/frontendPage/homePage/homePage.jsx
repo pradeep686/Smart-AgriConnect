@@ -1,4 +1,10 @@
 import React from "react";
+import { motion } from "framer-motion";
+
+const imageVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }
+};
 
 const HomePage = () => {
   return (
@@ -8,21 +14,24 @@ const HomePage = () => {
 
     <div className="relative  min-h-screen bg-gray-100">
       {/* Full-width Image Section */}
-      <div 
-        className="relative w-324.3 h-98  bg-cover bg-center" 
-        style={{ backgroundImage: "url('/images/main1.webp')" }}
-      >
-        {/* Overlay for better text visibility */}
-        <div className="inset-0 bg-black/50"></div>
+      <motion.div
+  variants={imageVariants}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: false, amount: 0.3 }}
+  className="relative w-full h-98 bg-cover bg-center"
+  style={{ backgroundImage: "url('/images/main1.webp')" }}
+>
+  {/* Overlay for better text visibility */}
+  <div className="inset-0 bg-black/50"></div>
 
-        {/* Text Content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6">
-          <h6 className="text-4xl md:text-5xl font-bold tracking-wide drop-shadow-lg">
-            Smart AgriConnect – A Unified Digital Platform for Farmers
-          </h6>
-          
-        </div>
-      </div>          
+  {/* Text Content */}
+  <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6">
+    <h6 className="text-4xl md:text-5xl font-bold tracking-wide drop-shadow-lg">
+      Smart AgriConnect – A Unified Digital Platform for Farmers
+    </h6>
+  </div>
+</motion.div>;        
     
         {/* About Us Section */}
         <div className="bg-white shadow-lg rounded-xl top-100 mx-4 mt-2 p-8 flex items-center space-x-8">
