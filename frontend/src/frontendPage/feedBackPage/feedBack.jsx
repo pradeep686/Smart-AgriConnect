@@ -55,7 +55,15 @@ const FeedbackPage = () => {
         >
           <div className="bg-white shadow-2xl rounded-2xl p-6 w-full">
             <h2 className="text-3xl font-bold text-gray-800 text-center">Feedback</h2>
-            <p className="text-gray-600 text-center mt-2">We value your feedback to improve our platform.</p>
+            <motion.p
+                    className="text-pink-600 text-center mt-2"
+                    initial={{ x: -10, opacity: 0 }}
+                    animate={{ x: 10, opacity: 1 }}
+                    transition={{ repeat: Infinity, repeatType: "reverse", duration: 5 }}
+                  >
+                  We value your feedback to improve our platform.
+                  </motion.p>
+            <p className=""></p>
             <div className="mt-4">
 
               <input 

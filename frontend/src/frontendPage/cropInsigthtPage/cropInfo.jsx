@@ -80,7 +80,7 @@ const CropInfo = () => {
       🌱 {selectedCategory}
       </h2>
       <motion.p
-        className="mt-2 text-sm font-bold text-pink-600"
+        className="mt-2 text-sm font-bold text-teal-500"
         initial={{ x: -10, opacity: 0 }}
         animate={{ x: 10, opacity: 1 }}
         transition={{ repeat: Infinity, repeatType: "reverse", duration: 5 }}

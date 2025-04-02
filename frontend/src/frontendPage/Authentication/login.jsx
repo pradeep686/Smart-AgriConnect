@@ -18,13 +18,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // ✅ Check for Admin Login
-    if (formData.email === "admin@gmail.com" && formData.password === "admin") {
-      alert("Admin login successful");
-      localStorage.setItem("role", "admin"); // ✅ Store role in localStorage
-      navigate("/dashboard", { replace: true }); // ✅ Redirect to Admin Dashboard
-      return;
-    }
+
 
     try {
       const log = await axios.post('http://localhost:9009/userLogin/login', formData);

@@ -23,6 +23,7 @@ const CropInsight = () => {
             visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
           }}
         >
+          
           {/* List of Crop Categories */}
           {cropData.map((crop, index) => (
             <CropCard 
