@@ -72,6 +72,7 @@ const ProfilePicture = ({ isDropdownOpen, toggleDropdown, setIsDropdownOpen }) =
           {token ? (
             <>
               <div className="flex items-center gap-2">
+             
                 <span className="text-lg">Welcome,</span>
                 <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600 text-lg">
                   {userName}
@@ -105,6 +106,11 @@ const ProfilePicture = ({ isDropdownOpen, toggleDropdown, setIsDropdownOpen }) =
               onClick={() => setIsDropdownOpen(false)}
               className="flex items-center gap-2 px-7 py-2 !text-green-600 font-semibold"
             >
+               {/* <Link to="/translate">
+            <button className="bg-white text-blue-600 px-4 py-2 rounded-md shadow-md hover:bg-gray-200">
+              Translate
+            </button>
+          </Link> */}
               <LogIn className="w-4 h-4" /> Login
             </Link>
           )}
