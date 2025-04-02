@@ -1,14 +1,27 @@
-import { BrowserRouter , Routes, Route } from "react-router-dom";
-import AdminLogin from './administrator Page/AdminLogin';
-function App() {
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import AdminLogin from "./administrator Page/AdminLogin";
+import AdminDashboard from "./administrator Page/AdminDashboard";
+import "./index.css";
+
+function AppLayout() {
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/";
+
   return (
     <>
-    <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<AdminLogin />} />
-    </Routes>
-    </BrowserRouter>
+      {!isLoginPage && <AdminDashboard />}
+      <Routes>
+        <Route path="/" element={<AdminLogin />} />
+      </Routes>
     </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppLayout />
+    </BrowserRouter>
   );
 }
 
