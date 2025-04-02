@@ -7,7 +7,7 @@ const userLogin = require('./router/userLoginRouter');
 const userAddress = require('./router/userAddressRoute');
 const authRoutes = require('./router/authRoutes');
 
-const PORT = process.env.PORT || 9009;
+const PORT = process.env.PORT || 9010;
 
 app.use(cors({
     origin: "http://localhost:5173", 
@@ -29,7 +29,12 @@ app.get('/', (req, res) => {
     return res.json({ msg: "hi" });
 });
 
+try{
 app.listen(PORT, () => {
     console.log("App is running on port: " + PORT);
     db();
 });
+}
+catch(e){
+    console.log(e.message)
+}
