@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
-const API_URL = "http://localhost:9009/api/auth";
+const API_URL = "http://localhost:9010/api/auth";
 
 export default function AdminLogin() {
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [message, setMessage] = useState("");
   const [otpSent, setOtpSent] = useState(false);
-  const navigate = useNavigate();
 
   // Function to send OTP
   const sendOtp = async () => {
@@ -28,7 +26,6 @@ export default function AdminLogin() {
       const res = await axios.post(`${API_URL}/verify-otp`, { email, otp });
       localStorage.setItem("token", res.data.token);
       setMessage("Login successful");
-      navigate("/admin-dashboard");
     } catch (error) {
       setMessage(error.response?.data?.message || "Invalid OTP");
     }
