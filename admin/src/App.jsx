@@ -1,15 +1,14 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import AdminLogin from "./administrator Page/AdminLogin";
-import AdminDashboard from "./administrator Page/AdminDashboard";
+import Navbar from "./administrator Page/Navbar";
 import "./index.css";
-
 function AppLayout() {
   const location = useLocation();
   const isLoginPage = location.pathname === "/";
 
   return (
     <>
-      {!isLoginPage && <AdminDashboard />}
+      {!isLoginPage && <Navbar />}
       <Routes>
         <Route path="/" element={<AdminLogin />} />
       </Routes>

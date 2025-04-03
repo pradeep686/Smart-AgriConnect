@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { FaHome, FaSignOutAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-function AdminDashboard() {
+function Navbar() {
   const navigate = useNavigate();
 
   return (
@@ -72,4 +72,4 @@ function AdminDashboard() {
   );
 }
 
-export default AdminDashboard;
+export default Navbar;
