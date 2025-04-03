@@ -6,11 +6,13 @@ const db = require('./config/db');
 const userLogin = require('./router/userLoginRouter');
 const userAddress = require('./router/userAddressRoute');
 const authRoutes = require('./router/authRoutes');
-
+const subsideRoute=require('./router/subsidiesRoutes')
 const PORT = process.env.PORT || 9010;
 
+const allowedPorts = [5173, 5174];
+
 app.use(cors({
-    origin: "http://localhost:5173", 
+    origin: allowedPorts.map(port => `http://localhost:${port}`),
     credentials: true 
 }));
 
@@ -24,7 +26,7 @@ app.use((req, res, next) => {
 app.use('/userLogin', userLogin);
 app.use('/userAddress', userAddress);
 app.use('/api/auth', authRoutes);
-
+app.use('/api/subsidie',subsideRoute)
 app.get('/', (req, res) => {
     return res.json({ msg: "hi" });
 });
