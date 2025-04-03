@@ -37,12 +37,21 @@ const sendOTP = async (req, res) => {
   });
 };
 
-// Verify OTP & Generate Token
 const verifyOTP = async (req, res) => {
   const { email, otp } = req.body;
+  console.log('Received request body:', req.body);
+
   const user = await User.findOne({ email });
 
-  if (!user || user.otp !== otp || new Date() > user.otpExpires) {
+  if (!user) {
+    return res.status(400).json({ message: 'User not found' });
+  }
+
+  console.log('User found:', user);
+  console.log('Stored OTP:', user.otp, 'Provided OTP:', otp);
+  console.log('Current Time:', new Date(), 'OTP Expiry:', new Date(user.otpExpires));
+
+  if (user.otp !== String(otp) || new Date() > new Date(user.otpExpires)) {
     return res.status(400).json({ message: 'Invalid or expired OTP' });
   }
 
