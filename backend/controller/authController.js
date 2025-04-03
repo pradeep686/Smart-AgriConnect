@@ -16,7 +16,7 @@ const generateOTP = () => Math.floor(100000 + Math.random() * 900000).toString()
 // Send OTP
 const sendOTP = async (req, res) => {
   const { email } = req.body;
-  if (email !== 'agriconnect26@gmail.com') {
+  if (email !== 'agriconnect2026@gmail.com') {
     return res.status(403).json({ message: 'Unauthorized email' });
   }
 

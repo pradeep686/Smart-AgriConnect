@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { translateText } from "../../utils/translate"; // Ensure correct relative path
+import { translateText } from "../utils/translate";  // Ensure correct relative path
 
 const TranslateComponent = () => {
   const [inputText, setInputText] = useState("");
