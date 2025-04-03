@@ -19,6 +19,9 @@ import Feedback from "./frontendPage/feedBackPage/feedBack";
 import Login from "./frontendPage/Authentication/login";
 import PersonalInformation from "./frontendPage/navbarPage/PersonalInformation.jsx";
 
+import TranslateComponent from "./frontendPage/translation/TranslateComponent.jsx";
+
+
 
 function AppContent() {
   return (
