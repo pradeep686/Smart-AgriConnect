@@ -8,6 +8,8 @@ const userAddress = require('./router/userAddressRoute');
 const authRoutes = require('./router/authRoutes');
 const subsideRoute=require('./router/subsidiesRoutes')
 const PORT = process.env.PORT || 9010;
+const cropInsightRoute=require('./router/cropInsightRoutes')
+const pesticideController=require('./router/pesticidesController')
 
 const allowedPorts = [5173, 5174];
 
@@ -27,6 +29,9 @@ app.use('/userLogin', userLogin);
 app.use('/userAddress', userAddress);
 app.use('/api/auth', authRoutes);
 app.use('/api/subsidie',subsideRoute)
+app.use('/api/cropInsight',cropInsightRoute)
+app.use('/api/pesticide',pesticideController)
+
 app.get('/', (req, res) => {
     return res.json({ msg: "hi" });
 });

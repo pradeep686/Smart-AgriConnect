@@ -36,7 +36,7 @@ const SignUpPage = () => {
 
     try {
       setLoading(true);
-      const response = await axios.post("http://localhost:9009/userLogin/create", {
+      const response = await axios.post("http://localhost:9010/userLogin/create", {
         name: formData.name,
         email: formData.email,
         password: formData.password,
