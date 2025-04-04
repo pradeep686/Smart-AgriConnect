@@ -30,19 +30,19 @@ const addSubSidies = async (req, res) => {
                 if (error) return res.status(500).json({ error: error.message });
 
                 const newSubsidy = new Subsidy({
-                    category: category || "General",
-                    subsidyName: subsidyName || "No Name",
+                    category,
+                    subsidyName,
                     image: result.secure_url,
-                    shortInfo: shortInfo || "No Short Info",
-                    briefInfo: briefInfo || "No Brief Info",
-                    objective: objective || "No Objective",
-                    eligibility: safeParseJSON(eligibility),
-                    benefits: safeParseJSON(benefits),
-                    documentsRequired: safeParseJSON(documentsRequired),
-                    applicationProcess: safeParseJSON(applicationProcess),
-                    beneficiaryStatus: safeParseJSON(beneficiaryStatus),
-                    importantConsiderations: safeParseJSON(importantConsiderations),
-                    officialWebsite: officialWebsite || "No Website"
+                    shortInfo,
+                    briefInfo,
+                    objective,
+                    eligibility,
+                    benefits ,
+                    documentsRequired,
+                    applicationProcess,
+                    beneficiaryStatus,
+                    importantConsiderations,
+                    officialWebsite
                 });
 
                 await newSubsidy.save();
@@ -68,51 +68,60 @@ const getSubSidies = async (req, res) => {
 const editSubSidies = async (req, res) => {
     try {
         const subsidyId = req.params.id;
-        const {
-            category, subsidyName, shortInfo, briefInfo, objective,
-            eligibility, benefits, documentsRequired, applicationProcess,
-            beneficiaryStatus, importantConsiderations, officialWebsite
-        } = req.body;
+        
+        // Initialize update object with text fields from either body or form-data
+        const updateData = {
+            category: req.body.category,
+            subsidyName: req.body.subsidyName,
+            shortInfo: req.body.shortInfo,
+            briefInfo: req.body.briefInfo,
+            objective: req.body.objective,
+            eligibility: req.body.eligibility,
+            benefits: req.body.benefits,
+            documentsRequired: req.body.documentsRequired,
+            applicationProcess: req.body.applicationProcess,
+            beneficiaryStatus: req.body.beneficiaryStatus,
+            importantConsiderations: req.body.importantConsiderations,
+            officialWebsite: req.body.officialWebsite
+        };
 
-        let imageUrl;
+        // Handle image upload if a new file was provided
         if (req.file) {
-            cloudinary.uploader.upload_stream(
-                { folder: 'subsidies' },
-                async (error, result) => {
-                    if (error) return res.status(500).json({ error: error.message });
-                    imageUrl = result.secure_url;
-                }
-            ).end(req.file.buffer);
+            // Upload new image to Cloudinary
+            const result = await new Promise((resolve, reject) => {
+                cloudinary.uploader.upload_stream(
+                    { folder: 'subsidies' },
+                    (error, result) => {
+                        if (error) reject(error);
+                        else resolve(result);
+                    }
+                ).end(req.file.buffer);
+            });
+            updateData.image = result.secure_url;
         }
 
+        // Update the subsidy in the database
         const updatedSubsidy = await Subsidy.findByIdAndUpdate(
             subsidyId,
-            {
-                category: category || "General",
-                subsidyName: subsidyName || "No Name",
-                image: imageUrl || undefined,
-                shortInfo: shortInfo || "No Short Info",
-                briefInfo: briefInfo || "No Brief Info",
-                objective: objective || "No Objective",
-                eligibility: safeParseJSON(eligibility),
-                benefits: safeParseJSON(benefits),
-                documentsRequired: safeParseJSON(documentsRequired),
-                applicationProcess: safeParseJSON(applicationProcess),
-                beneficiaryStatus: safeParseJSON(beneficiaryStatus),
-                importantConsiderations: safeParseJSON(importantConsiderations),
-                officialWebsite: officialWebsite || "No Website"
-            },
+            updateData,
             { new: true }
         );
 
-        if (!updatedSubsidy) return res.status(404).json({ error: 'Subsidy not found' });
+        if (!updatedSubsidy) {
+            return res.status(404).json({ error: 'Subsidy not found' });
+        }
 
-        return res.status(200).json({ message: 'Subsidy updated successfully', subsidy: updatedSubsidy });
+        return res.status(200).json({ 
+            message: 'Subsidy updated successfully', 
+            subsidy: updatedSubsidy 
+        });
     } catch (e) {
-        return res.status(500).json({ error: e.message });
+        console.error("Error updating subsidy:", e);
+        return res.status(500).json({ 
+            error: e.message || 'Failed to update subsidy' 
+        });
     }
 };
-
 // Delete a subsidy
 const deleteSubsidies = async (req, res) => {
     try {

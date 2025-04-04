@@ -11,7 +11,7 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 jygu
 df
-
+k
 admin page:
 docker build -t agri-connect-admin-page .
 docker run -d -p 8080:80 agri-connect-admin-page
