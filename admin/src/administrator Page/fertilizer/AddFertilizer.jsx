@@ -104,6 +104,36 @@ function AddFertilizer() {
       )}
 
       <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg p-6">
+
+         {/* Image Upload */}
+         <div className="mb-6">
+          <label className="block text-sm font-medium text-gray-700 mb-2">Fertilizer Image*</label>
+          <div className="flex items-center space-x-4">
+            <div className="flex-1">
+              <input
+                type="file"
+                name="image"
+                onChange={handleImageChange}
+                className="block w-full text-sm text-gray-500
+                  file:mr-4 file:py-2 file:px-4
+                  file:rounded-md file:border-0
+                  file:text-sm file:font-semibold
+                  file:bg-green-50 file:text-green-700
+                  hover:file:bg-green-100"
+                accept="image/*"
+                required
+              />
+              <p className="mt-1 text-xs text-gray-500">Upload an image of the fertilizer</p>
+            </div>
+            {previewImage && (
+              <div className="w-24 h-24 border rounded-md overflow-hidden">
+                <img src={previewImage} alt="Preview" className="w-full h-full object-cover" />
+              </div>
+            )}
+          </div>
+        </div>
+
+        
         {/* Name */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-1">Name*</label>
@@ -144,34 +174,6 @@ function AddFertilizer() {
             required
             placeholder="NPK values and other nutrient contents"
           />
-        </div>
-
-        {/* Image Upload */}
-        <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-2">Fertilizer Image*</label>
-          <div className="flex items-center space-x-4">
-            <div className="flex-1">
-              <input
-                type="file"
-                name="image"
-                onChange={handleImageChange}
-                className="block w-full text-sm text-gray-500
-                  file:mr-4 file:py-2 file:px-4
-                  file:rounded-md file:border-0
-                  file:text-sm file:font-semibold
-                  file:bg-blue-50 file:text-blue-700
-                  hover:file:bg-blue-100"
-                accept="image/*"
-                required
-              />
-              <p className="mt-1 text-xs text-gray-500">Upload an image of the fertilizer</p>
-            </div>
-            {previewImage && (
-              <div className="w-24 h-24 border rounded-md overflow-hidden">
-                <img src={previewImage} alt="Preview" className="w-full h-full object-cover" />
-              </div>
-            )}
-          </div>
         </div>
 
         {/* Usage */}
