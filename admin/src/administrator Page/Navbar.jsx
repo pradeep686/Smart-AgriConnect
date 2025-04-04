@@ -34,20 +34,17 @@ function Navbar() {
           <Link to='/add-subsidies' className="block px-4 py-3 rounded-lg font-medium transition duration-300 hover:bg-green-500">
             📝 Subsidies
           </Link>
-          <Link to='/add-crop-insight' className="block px-4 py-3 rounded-lg font-medium transition duration-300 hover:bg-green-500">
+          <Link to='/add-cropinsigts' className="block px-4 py-3 rounded-lg font-medium transition duration-300 hover:bg-green-500">
             🌾 Crop Insight
           </Link>
-          <Link to='/add-fertilizer' className="block px-4 py-3 rounded-lg font-medium transition duration-300 hover:bg-green-500">
-            🌿 Fertilizer
+          <Link to='/add-pesticides' className="block px-4 py-3 rounded-lg font-medium transition duration-300 hover:bg-green-500">
+            🌿 Crop pesticides
           </Link>
-          <Link to='/add-pesticide' className="block px-4 py-3 rounded-lg font-medium transition duration-300 hover:bg-green-500">
-            🐞 Pesticide
+          <Link to='/add-fertilizer' className="block px-4 py-3 rounded-lg font-medium transition duration-300 hover:bg-green-500">
+            🌿  Crop fertilizer
           </Link>
         </nav>
-      </div>
-
-      
-      
+      </div>         
     </div>
   );
 }
