@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function ShowSubsidies() {
+
+  const navigate = useNavigate();
+
   const [subsidies, setSubsidies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -15,9 +19,6 @@ function ShowSubsidies() {
     eligibility: '',
     benefits: '',
     documentsRequired: '',
-    applicationProcess: '',
-    beneficiaryStatus: '',
-    importantConsiderations: '',
     officialWebsite: '',
     image: null
   });
@@ -50,9 +51,6 @@ function ShowSubsidies() {
       eligibility: subsidy.eligibility,
       benefits: subsidy.benefits,
       documentsRequired: subsidy.documentsRequired,
-      applicationProcess: subsidy.applicationProcess,
-      beneficiaryStatus: subsidy.beneficiaryStatus,
-      importantConsiderations: subsidy.importantConsiderations,
       officialWebsite: subsidy.officialWebsite,
       image: null
     });
@@ -119,7 +117,16 @@ function ShowSubsidies() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-center mb-8">Manage Subsidies</h1>
+       <button
+      onClick={() => navigate("/add-subsidies")}
+      className="relative px-6 py-3 font-semibold text-white transition duration-300 ease-in-out bg-blue-600 rounded-lg shadow-lg hover:bg-blue-700 hover:shadow-xl active:scale-95"
+    >
+      Add Subsidies
+    </button>
+     <h1 className="text-3xl font-extrabold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-900 drop-shadow-md animate-fadeIn">
+  Manage Subsidies Efficiently 
+</h1>
+
       
       {subsidies.length === 0 && !loading && (
         <div className="text-center py-8">
@@ -227,39 +234,7 @@ function ShowSubsidies() {
                     />
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Application Process</label>
-                    <textarea
-                      name="applicationProcess"
-                      value={formData.applicationProcess}
-                      onChange={handleInputChange}
-                      className="w-full px-3 py-2 border rounded"
-                      rows="3"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Beneficiary Status</label>
-                    <textarea
-                      name="beneficiaryStatus"
-                      value={formData.beneficiaryStatus}
-                      onChange={handleInputChange}
-                      className="w-full px-3 py-2 border rounded"
-                      rows="2"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Important Considerations</label>
-                    <textarea
-                      name="importantConsiderations"
-                      value={formData.importantConsiderations}
-                      onChange={handleInputChange}
-                      className="w-full px-3 py-2 border rounded"
-                      rows="2"
-                    />
-                  </div>
-
+                  
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Official Website</label>
                     <input

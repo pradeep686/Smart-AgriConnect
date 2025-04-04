@@ -167,17 +167,19 @@ const FertilizerInfo = () => {
                           <h3 className="font-semibold text-gray-700 mb-2">Suitable Crops</h3>
                           <p className="text-gray-600">{fertilizer.suitableCrops}</p>
                         </div>
-                        
+
+                       <div className="bg-gray-50 p-4 rounded-lg">
+                        <h3 className="font-semibold text-gray-700 mb-2">Benefits</h3>
+                        <p className="text-gray-600">{fertilizer.benefits}</p>
+                      </div>
+
                         <div className="bg-gray-50 p-4 rounded-lg">
                           <h3 className="font-semibold text-gray-700 mb-2">Market Price</h3>
                           <p className="text-green-600 font-medium">{fertilizer.marketPrice}</p>
                         </div>
                       </div>
                       
-                      <div className="bg-gray-50 p-4 rounded-lg">
-                        <h3 className="font-semibold text-gray-700 mb-2">Benefits</h3>
-                        <p className="text-gray-600">{fertilizer.benefits}</p>
-                      </div>
+                     
                       
                       <button 
                         className="mt-4 px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold rounded-lg shadow transition"

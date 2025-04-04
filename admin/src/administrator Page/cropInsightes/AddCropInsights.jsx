@@ -68,7 +68,7 @@ function AddCropInsights() {
           image: null
         });
         setPreviewImage(null);
-        navigate('/crop-insights'); // Redirect after successful submission
+        // navigate('/crop-insights'); // Redirect after successful submission
       }
     } catch (err) {
       setError(err.response?.data?.error || err.message);
