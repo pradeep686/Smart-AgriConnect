@@ -3,6 +3,7 @@ import AdminLogin from "./administrator Page/AdminLogin";
 import Navbar from "./administrator Page/Navbar";
 import AddSubsidies from "./administrator Page/subsidies/AddSubsidies";
 import "./index.css";
+import Feedback from "./administrator Page/feedback/Feedback"
 import ShowSubsidies from "./administrator Page/subsidies/ShowSubsidies";
 import AddCropInsights from "./administrator Page/cropInsightes/AddCropInsights";
 import ViewCropInsight from "./administrator Page/cropInsightes/ViewCropInsight";
@@ -10,6 +11,7 @@ import AddPesticides from "./administrator Page/pesticides/AddPesticides";
 import ViewPesticides from './administrator Page/pesticides/ViewPesticides';
 import AddFertilizers from "./administrator Page/fertilizer/AddFertilizer"
 import ViewFertilizer from "./administrator Page/fertilizer/ViewFertilizer";
+import  ResolvedFeedback  from "./administrator Page/feedback/ResolvedFeedback";
 function App() {
   return (
     <BrowserRouter>
@@ -38,6 +40,8 @@ function AdminLayout() {
           <Route path="/view-pesticides" element={<ViewPesticides/>}/>
           <Route path="/add-fertilizer" element={<AddFertilizers/>}/>
           <Route path="/view-fertilizers" element={<ViewFertilizer/>}/>
+          <Route path="/feedback" element={<Feedback/>}/>
+          <Route path="/ResolvedFeedback" element={<ResolvedFeedback/>}/>
           {/* Add more admin routes here */}
         </Routes>
       </div>
