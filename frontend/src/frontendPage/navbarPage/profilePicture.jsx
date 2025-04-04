@@ -17,7 +17,7 @@ const ProfilePicture = ({ isDropdownOpen, toggleDropdown, setIsDropdownOpen }) =
 
   const fetchUserName = async () => {
     try {
-      const response = await axios.get("http://localhost:9009/userLogin/me", {
+      const response = await axios.get("http://localhost:9010/userLogin/me", {
         headers: { Authorization: `Bearer ${token}` },
         withCredentials: true,
       });

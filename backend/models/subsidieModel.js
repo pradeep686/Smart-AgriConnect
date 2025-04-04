@@ -13,9 +13,6 @@ const schema = new mongoose.Schema({
   },
   benefits: { type: String, required: true }, // What the applicant gains
   documentsRequired: { type: String, required: true }, // List of required documents
-  applicationProcess: { type: String, required: true }, // Steps to apply
-  beneficiaryStatus: { type: String, required: true }, // Info on checking status
-  importantConsiderations: { type: String, required: true }, // Notes, tips, etc.
   officialWebsite: { type: String, required: true }, // Link to the official site
 });
 

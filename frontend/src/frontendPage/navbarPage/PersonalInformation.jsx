@@ -4,7 +4,7 @@ import { Trash2 } from "lucide-react";
 
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:9009/userAddress";
+const API_BASE_URL = "http://localhost:9010/userAddress";
 
 function PersonalInformation () {
     const [formData, setFormData] = useState({
