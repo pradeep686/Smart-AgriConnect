@@ -126,6 +126,8 @@ const PesticideInfo = () => {
                   <h2 className="text-xl font-semibold">
                     {getDisplayName(pesticide)}
                   </h2>
+
+                 {expandedIndex==null && <p>{pesticide.benefits}</p>}
                 </div>
               </div>
               {expandedIndex === index && (
