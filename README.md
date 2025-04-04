@@ -14,7 +14,7 @@ df
 
 admin page:
 docker build -t agri-connect-admin-page .
-run -d -p 8080:80 agri-connect-admin-page
+docker run -d -p 8080:80 agri-connect-admin-page
 user page:
 docker build -t agri-connect-user-page .
 docker run -d -p 8085:80 agri-connect-user-page
