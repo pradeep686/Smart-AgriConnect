@@ -12,7 +12,7 @@ function Navbar() {
       <div className="w-72 bg-green-700 text-white p-6 flex flex-col shadow-lg fixed left-0 top-0 h-screen">
         {/* Logout Button - Moved inside sidebar at top left */}
         <motion.button
-          className="absolute top-6 right-6 bg-red-600 text-white p-3 rounded-full shadow-md hover:bg-red-700 transition-transform hover:scale-105"
+          className="absolute top-8 left-362 bg-red-600 z-44 text-white p-3 rounded-full shadow-md hover:bg-red-700 transition-transform hover:scale-105"
           onClick={() => navigate("/")}
           whileHover={{ y: -3 }}
           whileTap={{ scale: 0.9 }}
@@ -32,24 +32,22 @@ function Navbar() {
         {/* Sidebar Links */}
         <nav className="space-y-4 flex-1">
           <Link to='/add-subsidies' className="block px-4 py-3 rounded-lg font-medium transition duration-300 hover:bg-green-500">
-            📝 Add Subsidies
+            📝 Subsidies
           </Link>
           <Link to='/add-crop-insight' className="block px-4 py-3 rounded-lg font-medium transition duration-300 hover:bg-green-500">
-            🌾 Add Crop Insight
+            🌾 Crop Insight
           </Link>
           <Link to='/add-fertilizer' className="block px-4 py-3 rounded-lg font-medium transition duration-300 hover:bg-green-500">
-            🌿 Add Fertilizer
+            🌿 Fertilizer
           </Link>
           <Link to='/add-pesticide' className="block px-4 py-3 rounded-lg font-medium transition duration-300 hover:bg-green-500">
-            🐞 Add Pesticide
+            🐞 Pesticide
           </Link>
         </nav>
       </div>
 
-      {/* Content Area for Pages */}
-      <div className="flex-1 ml-72 p-10 bg-green-50 min-h-screen overflow-y-auto">
-        <Outlet />  {/* 👈 This renders other pages */}
-      </div>
+      
+      
     </div>
   );
 }
