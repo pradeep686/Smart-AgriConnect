@@ -86,16 +86,9 @@ function AddSubsidies() {
   };
 
   return (
-<div>
-
- 
-    <button className="relative  px-6 py-3 font-semibold text-white transition-all duration-300 ease-in-out bg-blue-600 rounded-lg shadow-lg hover:bg-blue-600 hover:shadow-xl active:scale-95 group">
-  <Link to="/all-subsidies" className="flex items-center gap-2">
-    View Subsidies List 📋
-  </Link>
-</button>
-
-      <h1 className="text-3xl font-bold text-center mb-8 text-green-700">📝 Add New Subsidy</h1>
+    <div className="container mx-auto p-6 max-w-4xl">
+      <button className='bg-red-200' ><Link to="/all-subsidies">View Subsidies</Link></button>
+      <h1 className="text-3xl font-bold text-center mb-8 text-green-700">Add New Subsidy</h1>
       
       {error && (
         <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded">
@@ -104,7 +97,7 @@ function AddSubsidies() {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-lg mb-6">
+      <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg p-6">
         {/* Image Upload */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-2">Subsidy Image*</label>
@@ -135,35 +128,17 @@ function AddSubsidies() {
 
         {/* Basic Information */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-        <div>
-  <label className="block text-sm font-medium text-gray-700 mb-1">Category*</label>
-  <select
-    name="category"
-    value={formData.category}
-    onChange={handleInputChange}
-    className="w-full px-4 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-white cursor-pointer"
-    required
-  >
-    <option value="" disabled>Select a category</option>
-    {[
-      "Crops Subsidy",
-      "Fertilizer & Pesticides Subsidy",
-      "Irrigation Subsidy",
-      "Equipment Subsidy",
-      "Credit Subsidy",
-      "Price Support Subsidies",
-      "Power Subsidy",
-      "Export & Import Subsidies",
-      "Organic Farming Subsidy",
-      "Infrastructure Development Subsidies",
-    ].map((title) => (
-      <option key={title} value={title}>
-        {title}
-      </option>
-    ))}
-  </select>
-</div>
-
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Category*</label>
+            <input
+              type="text"
+              name="category"
+              value={formData.category}
+              onChange={handleInputChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              required
+            />
+          </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Subsidy Name*</label>
@@ -309,11 +284,11 @@ function AddSubsidies() {
         </div>
 
         {/* Submit Button */}
-        <div className="flex justify-center">
+        <div className="flex justify-end">
           <button
             type="submit"
             disabled={loading}
-            className="px-25 py-3 bg-green-600 text-white font-medium rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-6 py-2 bg-green-600 text-white font-medium rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? 'Adding...' : 'Add Subsidy'}
           </button>

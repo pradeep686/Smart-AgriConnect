@@ -23,14 +23,13 @@ const SubsidiesInfo = () => {
           const categoryData = response.data.filter(
             (subsidy) => subsidy.category === selectedCategory
           );
-          setFilteredSubsidies(categoryData.length ? categoryData : []);
+          setFilteredSubsidies(categoryData);
         }
       } catch (error) {
         console.error("Error fetching subsidies:", error);
         setError("Failed to load subsidies. Please try again later.");
       } finally {
         setLoading(false);
-        setFilteredSubsidies([]);
       }
     };
 
@@ -154,67 +153,6 @@ const SubsidiesInfo = () => {
                   Learn More
                 </button>
               )}
-  <div>
-    <p className="text-gray-700 mb-2">{subsidy.briefInfo}</p>
-    <p className="font-semibold">Objective:</p>
-    <p className="text-gray-600 mb-2">{subsidy.objective}</p>
-
-    <p className="font-semibold mt-2">Eligibility:</p>
-    <ul className="text-gray-600 list-disc list-inside">
-      <li><strong>Who Can Apply:</strong> {subsidy.eligibility.whoCanApply.join(", ")}</li>
-      <li><strong>Who Cannot Apply:</strong> {subsidy.eligibility.whoCannotApply.join(", ")}</li>
-    </ul>
-
-    <p className="font-semibold mt-2">Documents Required:</p>
-    <ul className="text-gray-600 list-disc list-inside">
-      {subsidy.documentsRequired.map((doc, i) => (
-        <li key={i}>{doc}</li>
-      ))}
-    </ul>
-
-    <p className="font-semibold mt-2">Application Process:</p>
-    <ul className="text-gray-600 list-disc list-inside">
-      {subsidy.applicationProcess.map((step, i) => (
-        <li key={i}>{step}</li>
-      ))}
-    </ul>
-
-    <p className="font-semibold mt-2">Beneficiary Status:</p>
-    <ul className="text-gray-600 list-disc list-inside">
-      {subsidy.beneficiaryStatus.map((status, i) => (
-        <li key={i}>{status}</li>
-      ))}
-    </ul>
-
-    <p className="font-semibold mt-2">Important Considerations:</p>
-    <ul className="text-gray-600 list-disc list-inside">
-      {subsidy.importantConsiderations.map((point, i) => (
-        <li key={i}>{point}</li>
-      ))}
-    </ul>
-
-    <p className="font-semibold mt-2">Benefits:</p>
-    <ul className="text-gray-600 list-disc list-inside">
-      {subsidy.benefits.map((benefit, i) => (
-        <li key={i}>{benefit}</li>
-      ))}
-    </ul>
-
-    <p className="font-semibold mt-2">Official Website: </p>
-    <a href={subsidy.officialWebsite} className="!text-blue-500" target="_blank" rel="noopener noreferrer">
-      {subsidy.officialWebsite}
-    </a>
-
-    <button onClick={() => setExpandedIndex(null)} className="mt-4 px-4 py-2 !bg-red-600 text-white rounded-lg">
-      Show Less
-    </button>
-  </div>
-) : (
-  <button onClick={() => setExpandedIndex(index)} className="mt-2 px-4 py-2 !bg-green-600 text-white rounded-lg">
-    Learn More
-  </button>
-)}
-
             </motion.div>
           ))}
       </div>

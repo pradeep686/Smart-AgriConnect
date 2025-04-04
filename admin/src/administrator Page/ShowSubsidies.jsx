@@ -1,42 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import { motion } from "framer-motion";
-
 
 function ShowSubsidies() {
-
-  const navigate = useNavigate();
-
-    useEffect(() => {
-      // Show the loader for 3 seconds before fetching weather data
-      const timer = setTimeout(() => {
-        fetchWeatherData("Erode");
-      }, 2500);
-  
-      return () => clearTimeout(timer); // Cleanup on unmount
-    }, []);
-
-
   const [subsidies, setSubsidies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [editingSubsidy, setEditingSubsidy] = useState(null);
   const [formData, setFormData] = useState({
-    category: '',
     subsidyName: '',
+    category: '',
     shortInfo: '',
     briefInfo: '',
     objective: '',
-    eligibility: {
-      whoCanApply: [],
-      whoCannotApply: []
-    },
-    benefits: [],
-    documentsRequired: [],
-    applicationProcess: [],
-    beneficiaryStatus: [],
-    importantConsiderations: [],
+    eligibility: '',
+    benefits: '',
+    documentsRequired: '',
+    applicationProcess: '',
+    beneficiaryStatus: '',
+    importantConsiderations: '',
     officialWebsite: '',
     image: null
   });
@@ -145,38 +126,6 @@ function ShowSubsidies() {
           <p>No subsidies found.</p>
         </div>
       )}
-   {/* Glowing "Loading..." Text */}
-     
-  if (loading) return <p className="text-red-500 text-center">Loading... </p>;
-  
-  if (error) return <p className="text-red-500 text-center">Error: {error}</p>;
-
-  return (
-    <div className="justify-center items-center min-h-screen w-full h-full">
-  <div className="container mx-auto p-0 w-full max-w-xl">
-
-  
-  </div>
-    <div className="container mx-auto  p-6">
-    <button
-      onClick={() => navigate("/add-subsidies")}
-      className="relative px-6 py-3 font-semibold text-white transition-all duration-300 ease-in-out bg-teal-600 rounded-lg shadow-lg hover:bg-teal-700 hover:shadow-xl active:scale-95"
-    >
-      <span className="transition-transform transform group-hover:-translate-x-1 text-white">⬅</span>
-    back
-    </button>
-      <h1 className="text-2xl font-bold text-center text-orange-600 mb-4">📋 Subsidies List</h1>
-      {subsidies.map((subsidy) => (
-        <div key={subsidy._id} className="bg-white p-6 rounded-lg shadow-lg mb-6">
-          {editingSubsidy === subsidy._id ? (
-            <div className="space-y-4">
-              {/* Subsidy Name */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700">Subsidy Name*</label>
-                <input required className="border p-2 w-full rounded" type="text" name="subsidyName" 
-                  value={formData.subsidyName} onChange={handleInputChange} />
-              </div>
->
 
       <div className="space-y-6">
         {subsidies.map((subsidy) => (
@@ -429,8 +378,6 @@ function ShowSubsidies() {
         ))}
       </div>
     </div>
-    </div>
-    
   );
 }
 
