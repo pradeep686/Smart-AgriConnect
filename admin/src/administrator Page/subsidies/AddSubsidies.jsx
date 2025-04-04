@@ -85,7 +85,7 @@ function AddSubsidies() {
       onClick={() => navigate("/all-subsidies")}
       className="relative px-6 py-3 font-semibold text-white transition duration-300 ease-in-out bg-blue-600 rounded-lg shadow-lg hover:bg-blue-700 hover:shadow-xl active:scale-95"
     >
-      View Subsidies
+      Manage Subsidies
     </button>
 
       <h1 className="text-3xl font-extrabold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-900 drop-shadow-md animate-fadeIn">

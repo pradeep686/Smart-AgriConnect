@@ -57,16 +57,23 @@ const CropInfo = () => {
             </div>
 
             <div className="flex justify-end mb-4">
-                <input
-                    type="text"
-                    placeholder="Search Crop..."
-                    className="w-80 bg-white/30 backdrop-blur-lg text-gray-800 placeholder-gray-600 border border-gray-300 rounded-full py-3 px-5 focus:outline-none focus:ring-2 focus:ring-gray-500 shadow-lg transition-all duration-300"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-            </div>
+  <div className="flex items-center">
+    <input
+      type="text"
+      placeholder="Search Crop..."
+      className="w-80 bg-white/30 backdrop-blur-lg text-gray-800 placeholder-gray-600 border border-gray-300 rounded-full py-3 px-5 focus:outline-none focus:ring-2 focus:ring-gray-500 shadow-lg transition-all duration-300"
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+    />
+    <button
+      className="ml-2 !bg-gray-700 text-white px-4 py-2 rounded-lg"
+    >
+      Search
+    </button>
+  </div>
+</div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-1">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 p-1">
                 {filteredCrops.map((crop, index) => (
                     <motion.div
                         key={index}
@@ -83,19 +90,19 @@ const CropInfo = () => {
                                 alt={crop.name}
                                 className="w-100 h-74 object-cover rounded-xl border border-gray-200 shadow-md"
                             />
-                        </div>
+                        </div><br />
 
-                        <h3 className="text-lg font-semibold mt-2">{crop.name}</h3>
+                        <h3 className="text-lg font-bold mt-2 text-green-600">{crop.name}</h3><br />
                         <p className="text-gray-600 text-sm mb-3">{crop.description}</p>
                         {expandedIndex === index ? (
                             <div>
-                                <p className="text-gray-700 mb-2"><strong>Scientific Name:</strong> {crop.scintificName}</p>
-                                <p className="text-gray-700"><strong>Soil Type:</strong> {crop.soilType}</p>
-                                <p className="text-gray-700"><strong>Yield Per Acre:</strong> {crop.yieldPricePerAcer}</p>
-                                <p className="text-gray-700"><strong>Uses:</strong> {crop.uses}</p>
-                                <p className="text-gray-700"><strong>Nutritional Value:</strong> {crop.nutritionlValue}</p>
+                                <p className="text-gray-700 mb-2"><strong>Scientific Name:</strong> {crop.scintificName}</p><br />
+                                <p className="text-gray-700"><strong>Soil Type:</strong> {crop.soilType}</p><br />
+                                <p className="text-gray-700"><strong>Yield Per Acre:</strong> {crop.yieldPricePerAcer}</p><br />
+                                <p className="text-gray-700"><strong>Uses:</strong> {crop.uses}</p><br />
+                                <p className="text-gray-700"><strong>Nutritional Value:</strong> {crop.nutritionlValue}</p><br />
                                 <button
-                                    className="mt-2 px-4 py-2 bg-red-600 text-white font-semibold rounded-lg"
+                                    className="mt-2 px-4 py-2 !bg-red-600 text-white font-semibold rounded-lg"
                                     onClick={() => setExpandedIndex(null)}
                                 >
                                     Show Less

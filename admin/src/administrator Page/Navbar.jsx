@@ -38,13 +38,13 @@ function Navbar() {
             🌾 Crop Insight
           </Link>
           <Link to='/add-pesticides' className="block px-4 py-3 rounded-lg font-medium transition duration-300 hover:bg-green-500">
-            🌿 Crop pesticides
+          🛡️ Crop pesticides
           </Link>
           <Link to='/add-fertilizer' className="block px-4 py-3 rounded-lg font-medium transition duration-300 hover:bg-green-500">
-            🌿  Crop fertilizer
+          💊  Crop fertilizer
           </Link>
           <Link to='/feedback' className="block px-4 py-3 rounded-lg font-medium transition duration-300 hover:bg-green-500">
-               Feedback
+          📜 Feedback
           </Link>
         </nav>
       </div>         

@@ -9,7 +9,6 @@ const addFertilizer= async (req, res) => {
         const {
             name,
             description,
-            type,
             nutritentComposition,
             usage,
             suitableCrops,
@@ -30,7 +29,6 @@ const addFertilizer= async (req, res) => {
                     name,
                     image: result.secure_url,
                     description,
-                    type,
                     nutritentComposition,
                     usage,
                     suitableCrops,
@@ -65,7 +63,6 @@ const editFertilizer = async (req, res) => {
         const updateData = {
             name: req.body.name,
             description: req.body.description,
-            type: req.body.type,
             nutritentComposition: req.body.nutritentComposition,
             usage: req.body.usage,
             suitableCrops: req.body.suitableCrops,

@@ -71,14 +71,21 @@ const SubsidiesInfo = () => {
       </div>
 
       <div className="flex justify-end mb-4">
-        <input
-          type="text"
-          placeholder="Search Subsidy..."
-          className="w-80 bg-white/30 backdrop-blur-lg !text-gray-800 placeholder-gray-600 border border-gray-300 rounded-full py-3 px-5 focus:outline-none focus:ring-2 focus:ring-gray-500 shadow-lg transition-all duration-300"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </div>
+  <div className="flex items-center">
+    <input
+      type="text"
+      placeholder="Search Subsidies..."
+      className="w-80 bg-white/30 backdrop-blur-lg text-gray-800 placeholder-gray-600 border border-gray-300 rounded-full py-3 px-5 focus:outline-none focus:ring-2 focus:ring-gray-500 shadow-lg transition-all duration-300"
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+    />
+    <button
+      className="ml-2 !bg-gray-700 text-white px-4 py-2 rounded-lg"
+    >
+      Search
+    </button>
+  </div>
+</div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-2">
         {filteredSubsidies

@@ -84,11 +84,17 @@ function AddFertilizer() {
   };
 
   return (
-    <div className="container mx-auto p-6 max-w-4xl">
-      <button className='bg-blue-200 px-4 py-2 rounded mb-4'>
-        <Link to="/view-fertilizers">View Fertilizers</Link>
-      </button>
-      <h1 className="text-3xl font-bold text-center mb-8 text-blue-700">Add New Fertilizer</h1>
+    <div className="container mx-auto p-6 max-w-8xl">
+
+        <Link to="/view-fertilizers">
+        <button className="relative px-6 py-3 font-semibold text-white transition duration-300 ease-in-out bg-blue-600 rounded-lg shadow-lg hover:bg-blue-700 hover:shadow-xl active:scale-95">
+          Manage Fertilizers
+        </button>
+      </Link>
+      
+            <h1 className="text-3xl font-bold text-center mb-8 text-green-700">Add New Fertilizer</h1>
+
+      
       
       {error && (
         <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded">
@@ -123,20 +129,6 @@ function AddFertilizer() {
             rows="3"
             required
             placeholder="Short description of the fertilizer"
-          />
-        </div>
-
-        {/* Type */}
-        <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-1">Type*</label>
-          <input
-            type="text"
-            name="type"
-            value={formData.type}
-            onChange={handleInputChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-            placeholder="Type of fertilizer (organic, chemical, etc.)"
           />
         </div>
 
@@ -199,7 +191,7 @@ function AddFertilizer() {
         {/* Suitable Crops */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-1">Suitable Crops*</label>
-          <input
+          <textarea
             type="text"
             name="suitableCrops"
             value={formData.suitableCrops}
@@ -227,7 +219,7 @@ function AddFertilizer() {
         {/* Market Price */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-1">Market Price*</label>
-          <input
+          <textarea
             type="text"
             name="marketPrice"
             value={formData.marketPrice}
@@ -239,11 +231,11 @@ function AddFertilizer() {
         </div>
 
         {/* Submit Button */}
-        <div className="flex justify-end">
+        <div className="flex justify-center h-11">
           <button
             type="submit"
             disabled={loading}
-            className="px-6 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-6 py-2 bg-green-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? 'Adding...' : 'Add Fertilizer'}
           </button>

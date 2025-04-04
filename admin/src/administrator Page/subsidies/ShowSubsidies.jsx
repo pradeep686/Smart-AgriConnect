@@ -116,7 +116,7 @@ function ShowSubsidies() {
   if (error) return <div className="text-center py-8 text-red-500"><p>Error: {error}</p></div>;
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 p-2 py-8">
        <button
       onClick={() => navigate("/add-subsidies")}
       className="relative px-6 py-3 font-semibold text-white transition duration-300 ease-in-out bg-blue-600 rounded-lg shadow-lg hover:bg-blue-700 hover:shadow-xl active:scale-95"
@@ -306,9 +306,6 @@ function ShowSubsidies() {
                     <p><span className="font-semibold">Eligibility:</span> {subsidy.eligibility}</p>
                     <p><span className="font-semibold">Benefits:</span> {subsidy.benefits}</p>
                     <p><span className="font-semibold">Documents Required:</span> {subsidy.documentsRequired}</p>
-                    <p><span className="font-semibold">Application Process:</span> {subsidy.applicationProcess}</p>
-                    <p><span className="font-semibold">Beneficiary Status:</span> {subsidy.beneficiaryStatus}</p>
-                    <p><span className="font-semibold">Important Considerations:</span> {subsidy.importantConsiderations}</p>
                     {subsidy.officialWebsite && (
                       <p>
                         <span className="font-semibold">Official Website:</span>{' '}

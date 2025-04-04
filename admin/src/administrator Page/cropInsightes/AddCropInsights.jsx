@@ -79,10 +79,13 @@ function AddCropInsights() {
   };
 
   return (
-    <div className="container mx-auto p-6 max-w-4xl">
-      <button className='bg-red-200 px-4 py-2 rounded mb-4'>
-        <Link to="/view-crop-insights">View Crop Insights</Link>
-      </button>
+    <div className="container mx-auto p-6 max-w-8xl">
+      <Link to="/view-crop-insights">
+  <button className="relative px-6 py-3 font-semibold text-white transition duration-300 ease-in-out bg-blue-600 rounded-lg shadow-lg hover:bg-blue-700 hover:shadow-xl active:scale-95">
+    Manage Crop Insights
+  </button>
+</Link>
+
       <h1 className="text-3xl font-bold text-center mb-8 text-green-700">Add New Crop Insight</h1>
       
       {error && (
@@ -123,17 +126,33 @@ function AddCropInsights() {
 
         {/* Basic Information */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Category*</label>
-            <input
-              type="text"
-              name="category"
-              value={formData.category}
-              onChange={handleInputChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-              required
-            />
-          </div>
+        <div>
+  <label className="block text-sm font-medium text-gray-700 mb-2">
+    Category*
+  </label>
+  <select
+    name="category"
+    value={formData.category}
+    onChange={handleInputChange}
+    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-white shadow-sm text-gray-700"
+    required
+  >
+    <option value="" disabled>Select a Crop Category</option>
+    <option value="Tree Crop">Tree Crop</option>
+    <option value="Cereal Crops">Cereal Crops</option>
+    <option value="Pulses (Legume Crops)">Pulses (Legume Crops)</option>
+    <option value="Vegetable Crops">Vegetable Crops</option>
+    <option value="Fruit Crops">Fruit Crops</option>
+    <option value="Flowering Crops">Flowering Crops</option>
+    <option value="Dry Fruit Crops">Dry Fruit Crops</option>
+    <option value="Medicinal & Aromatic Plants">Medicinal & Aromatic Plants</option>
+    <option value="Spices & Condiments">Spices & Condiments</option>
+    <option value="Fodder Crops">Fodder Crops</option>
+    <option value="Sugar Crops">Sugar Crops</option>
+    <option value="Beverage Crops">Beverage Crops</option>
+  </select>
+</div>
+
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Crop Name*</label>
@@ -164,7 +183,7 @@ function AddCropInsights() {
         {/* Scientific Name */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-1">Scientific Name*</label>
-          <input
+          <textarea
             type="text"
             name="scintificName"
             value={formData.scintificName}
@@ -177,7 +196,7 @@ function AddCropInsights() {
         {/* Soil Type */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-1">Soil Type*</label>
-          <input
+          <textarea
             type="text"
             name="soilType"
             value={formData.soilType}
@@ -190,7 +209,7 @@ function AddCropInsights() {
         {/* Yield Price Per Acre */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-1">Yield Price Per Acre*</label>
-          <input
+          <textarea
             type="text"
             name="yieldPricePerAcer"
             value={formData.yieldPricePerAcer}
@@ -227,7 +246,7 @@ function AddCropInsights() {
         </div>
 
         {/* Submit Button */}
-        <div className="flex justify-end">
+        <div className="flex justify-center h-13">
           <button
             type="submit"
             disabled={loading}

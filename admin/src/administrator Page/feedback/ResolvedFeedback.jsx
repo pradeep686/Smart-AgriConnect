@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 const ResolvedFeedback = () => {
   const [feedbacks, setFeedbacks] = useState([]);
+
+  const navigate = useNavigate();
 
   // Fetch resolved feedbacks
   useEffect(() => {
@@ -39,7 +42,17 @@ const ResolvedFeedback = () => {
 
   return (
     <div className="min-h-screen p-6 bg-gray-100">
-      <h2 className="text-3xl font-bold text-center text-gray-800">Resolved Feedback</h2>
+
+<button
+      onClick={() => navigate("/feedback")}
+      className="bg-pink-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition-transform transform hover:scale-105 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+    >
+      Unresolved Feedback
+     </button>
+    <h1 className="text-3xl font-extrabold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-900 drop-shadow-md animate-fadeIn">
+     Manage Resolved Feedback
+</h1>
+      <h2 className="text-3xl font-bold text-center text-gray-800"></h2>
       <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
         {feedbacks.length > 0 ? feedbacks.map((fb) => (
           <div key={fb._id} className="bg-gray-200 p-4 shadow-lg rounded-lg">
