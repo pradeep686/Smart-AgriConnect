@@ -3,13 +3,16 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-function AddPesticide() {
+function AddFertilizer() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    composition: '',
+    name: '',
+    description: '',
+    type: '',
+    nutritentComposition: '',
     usage: '',
     suitableCrops: '',
-    benefits: '',
+    Benefiyts: '',
     marketPrice: '',
     image: null
   });
@@ -39,37 +42,42 @@ function AddPesticide() {
       const formDataToSend = new FormData();
       
       // Append all fields based on your pesticide schema
-      formDataToSend.append('composition', formData.composition);
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('description', formData.description);
+      formDataToSend.append('type', formData.type);
+      formDataToSend.append('nutritentComposition', formData.nutritentComposition);
       formDataToSend.append('usage', formData.usage);
       formDataToSend.append('suitableCrops', formData.suitableCrops);
-      formDataToSend.append('benefits', formData.benefits);
+      formDataToSend.append('Benefiyts', formData.Benefiyts);
       formDataToSend.append('marketPrice', formData.marketPrice);
       if (formData.image) {
-        formDataToSend.append('images', formData.image); // Note: matches your backend field name
+        formDataToSend.append('image', formData.image); // Note: matches your backend field name
       }
 
-      const response = await axios.post('http://localhost:9010/api/pesticide/add', formDataToSend, {
+      const response = await axios.post('http://localhost:9010/api/fertilizer/add', formDataToSend, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       });
 
       if (response.data.message) {
-        alert('Pesticide added successfully!');
+        alert('Fertilizer added successfully!');
         setFormData({
-          composition: '',
+          name: '',
+          description: '',
+          type: '',
+          nutritentComposition: '',
           usage: '',
           suitableCrops: '',
-          benefits: '',
+          Benefiyts: '',
           marketPrice: '',
           image: null
         });
         setPreviewImage(null);
-        navigate('/pesticides'); // Redirect after successful submission
       }
     } catch (err) {
       setError(err.response?.data?.error || err.message);
-      console.error('Error adding pesticide:', err);
+      console.error('Error adding fertilizer:', err);
     } finally {
       setLoading(false);
     }
@@ -78,9 +86,9 @@ function AddPesticide() {
   return (
     <div className="container mx-auto p-6 max-w-4xl">
       <button className='bg-blue-200 px-4 py-2 rounded mb-4'>
-        <Link to="/view-pesticides">View Pesticides</Link>
+        <Link to="/view-fertilizers">View Fertilizers</Link>
       </button>
-      <h1 className="text-3xl font-bold text-center mb-8 text-blue-700">Add New Pesticide</h1>
+      <h1 className="text-3xl font-bold text-center mb-8 text-blue-700">Add New Fertilizer</h1>
       
       {error && (
         <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded">
@@ -90,9 +98,65 @@ function AddPesticide() {
       )}
 
       <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg p-6">
+        {/* Name */}
+        <div className="mb-6">
+          <label className="block text-sm font-medium text-gray-700 mb-1">Name*</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+            placeholder="Fertilizer name"
+          />
+        </div>
+
+        {/* Description */}
+        <div className="mb-6">
+          <label className="block text-sm font-medium text-gray-700 mb-1">Description*</label>
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleInputChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            rows="3"
+            required
+            placeholder="Short description of the fertilizer"
+          />
+        </div>
+
+        {/* Type */}
+        <div className="mb-6">
+          <label className="block text-sm font-medium text-gray-700 mb-1">Type*</label>
+          <input
+            type="text"
+            name="type"
+            value={formData.type}
+            onChange={handleInputChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+            placeholder="Type of fertilizer (organic, chemical, etc.)"
+          />
+        </div>
+
+        {/* Nutrient Composition */}
+        <div className="mb-6">
+          <label className="block text-sm font-medium text-gray-700 mb-1">Nutrient Composition*</label>
+          <textarea
+            name="nutritentComposition"
+            value={formData.nutritentComposition}
+            onChange={handleInputChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            rows="4"
+            required
+            placeholder="NPK values and other nutrient contents"
+          />
+        </div>
+
         {/* Image Upload */}
         <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-2">Pesticide Image*</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Fertilizer Image*</label>
           <div className="flex items-center space-x-4">
             <div className="flex-1">
               <input
@@ -108,7 +172,7 @@ function AddPesticide() {
                 accept="image/*"
                 required
               />
-              <p className="mt-1 text-xs text-gray-500">Upload an image of the pesticide</p>
+              <p className="mt-1 text-xs text-gray-500">Upload an image of the fertilizer</p>
             </div>
             {previewImage && (
               <div className="w-24 h-24 border rounded-md overflow-hidden">
@@ -116,20 +180,6 @@ function AddPesticide() {
               </div>
             )}
           </div>
-        </div>
-
-        {/* Composition */}
-        <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-1">Composition*</label>
-          <textarea
-            name="composition"
-            value={formData.composition}
-            onChange={handleInputChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            rows="4"
-            required
-            placeholder="Chemical composition and active ingredients"
-          />
         </div>
 
         {/* Usage */}
@@ -142,7 +192,7 @@ function AddPesticide() {
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             rows="4"
             required
-            placeholder="How to use the pesticide"
+            placeholder="How to use the fertilizer"
           />
         </div>
 
@@ -156,7 +206,7 @@ function AddPesticide() {
             onChange={handleInputChange}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
-            placeholder="Which crops this pesticide is suitable for"
+            placeholder="Which crops this fertilizer is suitable for"
           />
         </div>
 
@@ -164,13 +214,13 @@ function AddPesticide() {
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-1">Benefits*</label>
           <textarea
-            name="benefits"
-            value={formData.benefits}
+            name="Benefiyts"
+            value={formData.Benefiyts}
             onChange={handleInputChange}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             rows="4"
             required
-            placeholder="Benefits of using this pesticide"
+            placeholder="Benefits of using this fertilizer"
           />
         </div>
 
@@ -195,7 +245,7 @@ function AddPesticide() {
             disabled={loading}
             className="px-6 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {loading ? 'Adding...' : 'Add Pesticide'}
+            {loading ? 'Adding...' : 'Add Fertilizer'}
           </button>
         </div>
       </form>
@@ -203,4 +253,4 @@ function AddPesticide() {
   );
 }
 
-export default AddPesticide;
+export default AddFertilizer;

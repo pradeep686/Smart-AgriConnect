@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function ViewPesticides() {
+function ViewFertilizer() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [editingProduct, setEditingProduct] = useState(null);
   const [formData, setFormData] = useState({
-    composition: '',
+    name: '',
+    description: '',
+    type: '',
+    nutritentComposition: '',
     usage: '',
     suitableCrops: '',
-    benefits: '',
+    Benefiyts: '',
     marketPrice: '',
     image: null
   });
@@ -23,7 +26,7 @@ function ViewPesticides() {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:9010/api/pesticide/get');
+      const response = await axios.get('http://localhost:9010/api/fertilizer/get');
       setProducts(response.data);
       setLoading(false);
     } catch (err) {
@@ -35,14 +38,17 @@ function ViewPesticides() {
   const handleEditClick = (product) => {
     setEditingProduct(product._id);
     setFormData({
-      composition: product.composition,
+      name: product.name,
+      description: product.description,
+      type: product.type,
+      nutritentComposition: product.nutritentComposition,
       usage: product.usage,
       suitableCrops: product.suitableCrops,
-      benefits: product.benefits,
+      Benefiyts: product.Benefiyts,
       marketPrice: product.marketPrice,
       image: null
     });
-    setImagePreview(product.images);
+    setImagePreview(product.image);
   };
 
   const handleInputChange = (e) => {
@@ -69,29 +75,29 @@ function ViewPesticides() {
         }
       });
 
-      await axios.put(`http://localhost:9010/api/pesticide/edit/${id}`, formDataToSend, {
+      await axios.put(`http://localhost:9010/api/fertilizer/edit/${id}`, formDataToSend, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       });
       
       await fetchProducts();
-      alert('Product updated successfully');
+      alert('Fertilizer updated successfully');
       setEditingProduct(null);
       setImagePreview(null);
     } catch (error) {
-      alert('Error updating product: ' + (error.response?.data?.error || error.message));
+      alert('Error updating fertilizer: ' + (error.response?.data?.error || error.message));
     }
   };
 
   const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this product?')) {
+    if (window.confirm('Are you sure you want to delete this fertilizer?')) {
       try {
-        await axios.delete(`http://localhost:9010/api/pesticide/delete/${id}`);
+        await axios.delete(`http://localhost:9010/api/fertilizer/delete/${id}`);
         setProducts(products.filter(product => product._id !== id));
-        alert('Product deleted successfully');
+        alert('Fertilizer deleted successfully');
       } catch (error) {
-        alert('Error deleting product: ' + (error.response?.data?.error || error.message));
+        alert('Error deleting fertilizer: ' + (error.response?.data?.error || error.message));
       }
     }
   };
@@ -100,16 +106,16 @@ function ViewPesticides() {
     setExpanded(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
-  if (loading) return <div className="text-center py-8"><p>Loading products...</p></div>;
+  if (loading) return <div className="text-center py-8"><p>Loading fertilizers...</p></div>;
   if (error) return <div className="text-center py-8 text-red-500"><p>Error: {error}</p></div>;
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-center mb-8">Manage Pesticide Products</h1>
+      <h1 className="text-3xl font-bold text-center mb-8">Manage Fertilizer Products</h1>
       
       {products.length === 0 && !loading && (
         <div className="text-center py-8">
-          <p>No products found.</p>
+          <p>No fertilizers found.</p>
         </div>
       )}
 
@@ -118,26 +124,26 @@ function ViewPesticides() {
           <div key={product._id} className="bg-white rounded-lg shadow-md overflow-hidden">
             {editingProduct === product._id ? (
               <div className="p-6">
-                <h2 className="text-xl font-bold mb-4">Edit Product</h2>
+                <h2 className="text-xl font-bold mb-4">Edit Fertilizer</h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Composition*</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Name*</label>
                     <input
                       type="text"
-                      name="composition"
-                      value={formData.composition}
+                      name="name"
+                      value={formData.name}
                       onChange={handleInputChange}
                       className="w-full px-3 py-2 border rounded"
                       required
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Usage*</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Type*</label>
                     <input
                       type="text"
-                      name="usage"
-                      value={formData.usage}
+                      name="type"
+                      value={formData.type}
                       onChange={handleInputChange}
                       className="w-full px-3 py-2 border rounded"
                       required
@@ -146,6 +152,42 @@ function ViewPesticides() {
                 </div>
 
                 <div className="space-y-4 mb-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Description*</label>
+                    <textarea
+                      name="description"
+                      value={formData.description}
+                      onChange={handleInputChange}
+                      className="w-full px-3 py-2 border rounded"
+                      rows="3"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Nutrient Composition*</label>
+                    <textarea
+                      name="nutritentComposition"
+                      value={formData.nutritentComposition}
+                      onChange={handleInputChange}
+                      className="w-full px-3 py-2 border rounded"
+                      rows="4"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Usage*</label>
+                    <textarea
+                      name="usage"
+                      value={formData.usage}
+                      onChange={handleInputChange}
+                      className="w-full px-3 py-2 border rounded"
+                      rows="3"
+                      required
+                    />
+                  </div>
+
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Suitable Crops*</label>
                     <input
@@ -161,8 +203,8 @@ function ViewPesticides() {
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Benefits*</label>
                     <textarea
-                      name="benefits"
-                      value={formData.benefits}
+                      name="Benefiyts"
+                      value={formData.Benefiyts}
                       onChange={handleInputChange}
                       className="w-full px-3 py-2 border rounded"
                       rows="3"
@@ -222,14 +264,14 @@ function ViewPesticides() {
               <div className="p-6">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                   <div className="flex-1">
-                    <h2 className="text-xl font-bold">{product.composition}</h2>
-                    <p className="text-gray-600"><span className="font-semibold">Usage:</span> {product.usage}</p>
-                    <p className="mt-2"><span className="font-semibold">Suitable Crops:</span> {product.suitableCrops}</p>
+                    <h2 className="text-xl font-bold">{product.name}</h2>
+                    <p className="text-gray-600"><span className="font-semibold">Type:</span> {product.type}</p>
+                    <p className="mt-2"><span className="font-semibold">Description:</span> {product.description}</p>
                   </div>
-                  {product.images && (
+                  {product.image && (
                     <img 
-                      src={product.images} 
-                      alt={product.composition} 
+                      src={product.image} 
+                      alt={product.name} 
                       className="w-32 h-32 object-contain border rounded"
                     />
                   )}
@@ -237,7 +279,10 @@ function ViewPesticides() {
 
                 {expanded[product._id] && (
                   <div className="mt-4 space-y-3">
-                    <p><span className="font-semibold">Benefits:</span> {product.benefits}</p>
+                    <p><span className="font-semibold">Nutrient Composition:</span> {product.nutritentComposition}</p>
+                    <p><span className="font-semibold">Usage:</span> {product.usage}</p>
+                    <p><span className="font-semibold">Suitable Crops:</span> {product.suitableCrops}</p>
+                    <p><span className="font-semibold">Benefits:</span> {product.Benefiyts}</p>
                     <p><span className="font-semibold">Market Price:</span> {product.marketPrice}</p>
                   </div>
                 )}
@@ -273,4 +318,4 @@ function ViewPesticides() {
   );
 }
 
-export default ViewPesticides;
+export default ViewFertilizer;

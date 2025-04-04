@@ -14,13 +14,12 @@ const PesticideInfo = () => {
     const fetchPesticides = async () => {
       try {
         const response = await axios.get("http://localhost:9010/api/pesticide/get");
-        // Ensure we always have an array, even if response.data is undefined
         setPesticides(Array.isArray(response.data) ? response.data : []);
       } catch (error) {
         console.error("Error fetching pesticides:", error);
         setError("Failed to fetch pesticides data");
         toast.error("Failed to fetch pesticides data");
-        setPesticides([]); // Set to empty array on error
+        setPesticides([]);
       } finally {
         setLoading(false);
       }
@@ -29,17 +28,21 @@ const PesticideInfo = () => {
     fetchPesticides();
   }, []);
 
-  // Safe filtering with null checks
   const filteredPesticides = pesticides.filter((pesticide) => {
-    const pesticideName = pesticide?.name?.toLowerCase() || "";
+    const name = pesticide?.name?.toLowerCase() || "";
+    const composition = pesticide?.composition?.toLowerCase() || "";
     const searchTerm = search.toLowerCase();
-    return pesticideName.includes(searchTerm);
+    return name.includes(searchTerm) || composition.includes(searchTerm);
   });
 
   const handleSearch = () => {
     if (search && filteredPesticides.length === 0) {
       toast.error("No matching pesticide found.");
     }
+  };
+
+  const getDisplayName = (pesticide) => {
+    return pesticide.name || pesticide.composition?.split('\n')[0]?.replace('✔', '').trim() || "Pesticide";
   };
 
   if (loading) {
@@ -80,7 +83,6 @@ const PesticideInfo = () => {
         </motion.p>
       </div>
 
-      {/* Search Bar */}
       <div className="flex justify-end mb-4">
         <input
           type="text"
@@ -98,7 +100,6 @@ const PesticideInfo = () => {
         </button>
       </div>
 
-      {/* Pesticide Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {filteredPesticides.length > 0 ? (
           filteredPesticides.map((pesticide, index) => (
@@ -115,7 +116,7 @@ const PesticideInfo = () => {
               <div className="flex items-center">
                 <img
                   src={pesticide.images || "https://via.placeholder.com/100"}
-                  alt={pesticide.name || "Pesticide"}
+                  alt={getDisplayName(pesticide)}
                   className="w-24 h-24 object-cover rounded-md mr-4"
                   onError={(e) => {
                     e.target.src = "https://via.placeholder.com/100";
@@ -123,11 +124,8 @@ const PesticideInfo = () => {
                 />
                 <div>
                   <h2 className="text-xl font-semibold">
-                    {pesticide.name || "Unnamed Pesticide"}
+                    {getDisplayName(pesticide)}
                   </h2>
-                  <p className="text-gray-600">
-                    {pesticide.composition || "Composition not specified"}
-                  </p>
                 </div>
               </div>
               {expandedIndex === index && (
