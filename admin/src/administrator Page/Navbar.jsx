@@ -43,6 +43,9 @@ function Navbar() {
           <Link to='/add-fertilizer' className="block px-4 py-3 rounded-lg font-medium transition duration-300 hover:bg-green-500">
             🌿  Crop fertilizer
           </Link>
+          <Link to='/feedback' className="block px-4 py-3 rounded-lg font-medium transition duration-300 hover:bg-green-500">
+               Feedback
+          </Link>
         </nav>
       </div>         
     </div>

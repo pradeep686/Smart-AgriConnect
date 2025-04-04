@@ -12,7 +12,7 @@ const cropInsightRoute=require('./router/cropInsightRoutes')
 const pesticideController=require('./router/pesticidesController')
 const fertilizerController=require('./router/fertilizerRouter')
 const allowedPorts = [5173, 5174];
-
+const feedbackController=require('./router/feedbackRoutes')
 app.use(cors({
     origin: allowedPorts.map(port => `http://localhost:${port}`),
     credentials: true 
@@ -32,6 +32,8 @@ app.use('/api/subsidie',subsideRoute)
 app.use('/api/cropInsight',cropInsightRoute)
 app.use('/api/pesticide',pesticideController)
 app.use('/api/fertilizer',fertilizerController)
+app.use('/api/feedback',feedbackController)
+
 
 app.get('/', (req, res) => {
     return res.json({ msg: "hi" });
