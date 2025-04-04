@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function ViewCropInsight() {
+
+    const navigate = useNavigate();
+  
   const [cropInsights, setCropInsights] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -111,7 +115,17 @@ function ViewCropInsight() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-center mb-8">Manage Crop Insights</h1>
+      <button
+      onClick={() => navigate("/add-cropinsigts")}
+      className="relative px-6 py-3 font-semibold text-white transition duration-300 ease-in-out bg-blue-600 rounded-lg shadow-lg hover:bg-blue-700 hover:shadow-xl active:scale-95"
+    >
+      Add Crop Insights
+    </button>
+      
+      
+      <h1 className="text-3xl font-extrabold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-900 drop-shadow-md animate-fadeIn">
+      Manage Crop Insights Efficiently 
+</h1>
       
       {cropInsights.length === 0 && !loading && (
         <div className="text-center py-8">

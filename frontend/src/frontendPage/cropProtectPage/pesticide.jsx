@@ -98,7 +98,7 @@ const PesticideInfo = () => {
         >
           Search
         </button>
-      </div>
+      </div><br />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {filteredPesticides.length > 0 ? (
@@ -127,23 +127,23 @@ const PesticideInfo = () => {
                     {getDisplayName(pesticide)}
                   </h2>
 
-                 {expandedIndex==null && <p>{pesticide.benefits}</p>}
+                 
                 </div>
               </div>
               {expandedIndex === index && (
                 <div className="mt-4">
                   <p className="text-gray-700">
                     <strong>Usage:</strong> {pesticide.usage || "Usage information not available"}
-                  </p>
+                  </p><br />
                   <p className="text-gray-700">
                     <strong>Suitable Crops:</strong> {pesticide.suitableCrops || "Crop information not available"}
-                  </p>
+                  </p><br />
                   <p className="text-gray-700">
                     <strong>Benefits:</strong> {pesticide.benefits || "Benefits not specified"}
-                  </p>
+                  </p><br />
                   <p className="text-gray-700">
                     <strong>Market Price:</strong> {pesticide.marketPrice || "Price not available"}
-                  </p>
+                  </p><br />
                   <button
                     className="mt-2 px-4 py-2 !bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 transition"
                     onClick={(e) => {

@@ -28,7 +28,16 @@ const Feedback = () => {
 
   return (
     <div className="min-h-screen p-6 bg-gray-100">
-        <button className="bg-red-700 rounded-2xl"><Link to="/ResolvedFeedback">resolved feedback</Link></button>
+
+        <button className="bg-pink-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition-transform transform hover:scale-105 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+  <Link to="/ResolvedFeedback" className="flex items-center gap-2">
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path>
+    </svg>
+    Resolved Feedback
+  </Link>
+</button>
+
       <h2 className="text-3xl font-bold text-center text-gray-800">Unresolved Feedback</h2>
       <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
         {feedbacks.length > 0 ? feedbacks.map((fb) => (
