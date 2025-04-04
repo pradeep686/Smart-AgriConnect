@@ -65,16 +65,20 @@ function ShowSubsidies() {
       shortInfo: subsidy.shortInfo || '',
       briefInfo: subsidy.briefInfo || '',
       objective: subsidy.objective || '',
-      eligibility: subsidy.eligibility || '',
-      benefits: subsidy.benefits || '',
-      documentsRequired: subsidy.documentsRequired || '',
-      applicationProcess: subsidy.applicationProcess || '',
-      beneficiaryStatus: subsidy.beneficiaryStatus || '',
-      importantConsiderations: subsidy.importantConsiderations || '',
+      eligibility: subsidy.eligibility || {
+        whoCanApply: [],
+        whoCannotApply: []
+      },
+      benefits: subsidy.benefits || [],
+      documentsRequired: subsidy.documentsRequired || [],
+      applicationProcess: subsidy.applicationProcess || [],
+      beneficiaryStatus: subsidy.beneficiaryStatus || [],
+      importantConsiderations: subsidy.importantConsiderations || [],
       officialWebsite: subsidy.officialWebsite || '',
       image: null
     });
   };
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
