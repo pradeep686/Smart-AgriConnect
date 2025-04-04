@@ -11,10 +11,13 @@ const SubsidiesInfo = () => {
   const [filteredSubsidies, setFilteredSubsidies] = useState([]);
   const [expandedIndex, setExpandedIndex] = useState(null);
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchSubsidies = async () => {
       try {
+        setLoading(true);
         const response = await axios.get("http://localhost:9010/api/subsidie/get");
         if (response.data && Array.isArray(response.data)) {
           const categoryData = response.data.filter(
@@ -24,12 +27,33 @@ const SubsidiesInfo = () => {
         }
       } catch (error) {
         console.error("Error fetching subsidies:", error);
+        setError("Failed to load subsidies. Please try again later.");
+      } finally {
+        setLoading(false);
         setFilteredSubsidies([]);
       }
     };
 
     fetchSubsidies();
   }, [selectedCategory]);
+
+  if (loading) {
+    return (
+      <div className="ml-64 p-8 flex-1 overflow-hidden">
+        <p>Loading subsidies...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="ml-64 p-8 flex-1 overflow-hidden">
+        <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4">
+          <p>{error}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="ml-64 p-8 flex-1 overflow-hidden">
@@ -81,6 +105,55 @@ const SubsidiesInfo = () => {
               <h3 className="text-lg font-semibold">{subsidy.subsidyName}</h3>
               <p className="text-gray-600 text-sm mb-3">{subsidy.shortInfo}</p>
               {expandedIndex === index ? (
+                <div>
+                  <p className="text-gray-700 mb-2">{subsidy.briefInfo}</p>
+                  <p className="font-semibold">Objective:</p>
+                  <p className="text-gray-600 mb-2">{subsidy.objective}</p>
+
+                  <p className="font-semibold mt-2">Eligibility:</p>
+                  <p className="text-gray-600 whitespace-pre-line">
+                    {typeof subsidy.eligibility === 'string' ? subsidy.eligibility : ''}
+                  </p>
+
+                  <p className="font-semibold mt-2">Benefits:</p>
+                  <p className="text-gray-600 whitespace-pre-line">
+                    {typeof subsidy.benefits === 'string' ? subsidy.benefits : ''}
+                  </p>
+
+                  <p className="font-semibold mt-2">Documents Required:</p>
+                  <p className="text-gray-600 whitespace-pre-line">
+                    {typeof subsidy.documentsRequired === 'string' ? subsidy.documentsRequired : ''}
+                  </p>
+
+                  {subsidy.officialWebsite && (
+                    <div className="mt-2">
+                      <p className="font-semibold">Official Website: </p>
+                      <a 
+                        href={subsidy.officialWebsite} 
+                        className="!text-blue-500 break-all" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                      >
+                        {subsidy.officialWebsite}
+                      </a>
+                    </div>
+                  )}
+
+                  <button 
+                    onClick={() => setExpandedIndex(null)} 
+                    className="mt-4 px-4 py-2 !bg-red-600 text-white rounded-lg"
+                  >
+                    Show Less
+                  </button>
+                </div>
+              ) : (
+                <button 
+                  onClick={() => setExpandedIndex(index)} 
+                  className="mt-2 px-4 py-2 !bg-green-600 text-white rounded-lg"
+                >
+                  Learn More
+                </button>
+              )}
   <div>
     <p className="text-gray-700 mb-2">{subsidy.briefInfo}</p>
     <p className="font-semibold">Objective:</p>
