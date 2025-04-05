@@ -223,3 +223,117 @@ exports.deleteReply = asyncHandler(async (req, res, next) => {
     data: discussion
   });
 });
+
+
+
+// @desc    Get single discussion of logged-in user by ID
+// @route   GET /api/discussions/my/:id
+exports.getUserDiscussionsWithoutReplies = asyncHandler(async (req, res, next) => {
+  try {
+    const discussions = await Discussion.find({ user: req.user.id }).select('-replies');
+
+    res.status(200).json({
+      success: true,
+      count: discussions.length,
+      data: discussions
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// @desc    Update discussion by ID and logged-in user
+// @route   PUT /api/discussions/my/:id
+// @access  Private
+exports.updateMyDiscussionById = asyncHandler(async (req, res, next) => {
+  try {
+    let discussion = await Discussion.findOne({
+      _id: req.params.id,
+      user: req.user.id
+    });
+
+    if (!discussion) {
+      return next(new ErrorResponse(`No discussion found with your ID and this discussion ID`, 404));
+    }
+
+    let imageData = discussion.image;
+
+    if (req.file) {
+      if (discussion.image.public_id) {
+        await cloudinary.uploader.destroy(discussion.image.public_id);
+      }
+
+      const result = await cloudinary.uploader.upload(req.file.path, {
+        folder: 'discussions',
+        width: 800,
+        crop: "scale"
+      });
+
+      imageData = {
+        public_id: result.public_id,
+        url: result.secure_url
+      };
+    }
+
+    const { title, tags, content } = req.body;
+    const tagsArray = tags ? tags.split(',').map(tag => tag.trim()) : discussion.tags;
+
+    discussion = await Discussion.findByIdAndUpdate(
+      req.params.id,
+      {
+        title: title || discussion.title,
+        tags: tagsArray,
+        content: content || discussion.content,
+        image: imageData
+      },
+      { new: true, runValidators: true }
+    );
+
+    res.status(200).json({
+      success: true,
+      data: discussion
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// @desc    Delete discussion by ID and logged-in user
+// @route   DELETE /api/discussions/my/:id
+// @access  Private
+exports.deleteMyDiscussionById = async (req, res, next) => {
+  try {
+    // First, find the discussion by ID and user ID to verify ownership
+    const discussion = await Discussion.findOne({
+      _id: req.params.id,
+      user: req.user.id
+    });
+
+    if (!discussion) {
+      return res.status(404).json({
+        success: false,
+        message: 'No discussion found with your ID and this discussion ID'
+      });
+    }
+
+    // Delete image from Cloudinary if it exists
+    if (discussion.image && discussion.image.public_id) {
+      await cloudinary.uploader.destroy(discussion.image.public_id);
+    }
+
+    // Delete the discussion
+    await Discussion.findByIdAndDelete(req.params.id);
+
+    res.status(200).json({
+      success: true,
+      message: 'Discussion deleted successfully'
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: 'Server Error',
+      error: error.message
+    });
+  }
+};
