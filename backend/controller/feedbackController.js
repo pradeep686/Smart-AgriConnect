@@ -59,5 +59,16 @@ feedbackController.deleteFeedback = async (req, res) => {
     }
   };
   
+  feedbackController.postFeedback=async(req,res)=>{
+    try{
+        const{name,email,category,description,rating,resolved}=req.body
+        const feedback=new Feedback({name,email,category,description,rating,resolved})
+        await feedback.save()
+        res.status(201).json({message:"Feedback created successfully",feedback})
+    }
+    catch(e){
+      return res.status(500).json({ message: "Server error", err:e.message });
+    }
+  }
 
 module.exports = feedbackController;
