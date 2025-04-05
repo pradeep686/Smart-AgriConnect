@@ -32,7 +32,7 @@ const DiscussionForum = () => {
     const fetchDiscussions = async () => {
       try {
         const endpoint = view === "my" 
-          ? `${API_BASE_URL}/discussions/my-discussions` 
+          ? `${API_BASE_URL}/discussions` 
           : `${API_BASE_URL}/discussions`;
         
         const { data } = await axios.get(endpoint, {
