@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaPlus, FaReply, FaEdit, FaTrash, FaSearch } from "react-icons/fa";
 import axios from "axios";
-
+import { Link, useNavigate } from "react-router-dom";
+ 
 // Set the base URL for API requests
 const API_BASE_URL = "http://localhost:9010/api";
 
@@ -212,7 +213,7 @@ const DiscussionForum = () => {
                 onClick={() => setView("all")}
                 className={`px-4 py-2 rounded-full ${view === "all" ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-700'}`}
               >
-                All Discussions
+               <Link to="/my-discussion">My Discussions</Link> 
               </button>
               
             </div>

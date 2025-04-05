@@ -8,7 +8,11 @@ const {
   updateDiscussion,
   deleteDiscussion,
   addReply,
-  deleteReply
+  deleteReply,
+  getUserDiscussionsWithoutReplies,
+  updateMyDiscussionById,
+  deleteMyDiscussionById
+
 } = require('../controller/discussionController');
 const { protect } = require('../middleware/userLoginMiddleware');
 const upload = require('../middleware/uploadMiddleware');
@@ -30,5 +34,14 @@ router.route('/:id/replies')
 
 router.route('/:id/replies/:replyId')
   .delete(protect, deleteReply);
+
+  router.route('/my/without-replies')
+  .get(protect, getUserDiscussionsWithoutReplies);
+
+
+  router.route('/my/:id')
+  .put(protect, upload.single('image'), updateMyDiscussionById)
+  .delete(protect, deleteMyDiscussionById);
+
 
 module.exports = router;
