@@ -41,7 +41,7 @@ const ResolvedFeedback = () => {
   };
 
   return (
-    <div className="min-h-screen p-6 bg-gray-100">
+    <div className="min-h-screen p-8">
 
 <button
       onClick={() => navigate("/feedback")}
@@ -52,10 +52,10 @@ const ResolvedFeedback = () => {
     <h1 className="text-3xl font-extrabold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-900 drop-shadow-md animate-fadeIn">
      Manage Resolved Feedback
 </h1>
-      <h2 className="text-3xl font-bold text-center text-gray-800"></h2>
+      <h2 className="text-3xl font-bold text-center text-white"></h2>
       <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
         {feedbacks.length > 0 ? feedbacks.map((fb) => (
-          <div key={fb._id} className="bg-gray-200 p-4 shadow-lg rounded-lg">
+          <div key={fb._id} className="bg-white p-4 shadow-lg rounded-lg">
             <p><strong>Name:</strong> {fb.name}</p>
             <p><strong>Email:</strong> {fb.email}</p>
             <p><strong>Category:</strong> {fb.category}</p>
