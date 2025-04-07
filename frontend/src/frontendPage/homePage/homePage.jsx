@@ -31,7 +31,7 @@ const HomePage = () => {
       Smart AgriConnect – A Unified Digital Platform for Farmers
     </h6>
   </div>
-</motion.div>;        
+</motion.div>      
     
      
 
