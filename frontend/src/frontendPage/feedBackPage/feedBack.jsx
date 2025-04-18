@@ -109,13 +109,13 @@ const FeedbackPage = () => {
                 className="w-full p-3 border-2 border-green-400 rounded-xl focus:ring-2 mb-4"
               />
 
-              <div className="flex flex-wrap gap-2 mb-3">
+              <div className="flex flex-wrap gap-2  mb-3">
                 {categories.map((category) => (
                   <button
                     key={category}
                     onClick={() => setSelectedCategory(category)}
-                    className={`px-4 py-2 rounded-full border-2 text-black transition-all duration-300 ${
-                      selectedCategory === category ? 'bg-cyan-500 text-white' : 'border-green-400'
+                    className={`px-4 py-2 rounded-full border-2  text-black transition-all duration-300 ${
+                      selectedCategory === category ? '!bg-cyan-500 text-white' : 'border-green-400'
                     }`}
                   >
                     {category}
@@ -166,7 +166,7 @@ const FeedbackPage = () => {
               <br />
               <button 
                 onClick={handleSubmit}
-                className="w-full bg-orange-400 hover:bg-orange-600 text-white font-bold py-2 px-4 shadow-md transition-all duration-200 hover:scale-[1.02]"
+                className="w-full !bg-orange-400 hover:bg-orange-600 text-white font-bold py-2 px-4 shadow-md transition-all duration-200 hover:scale-[1.02]"
               >
                 Submit Feedback
               </button>

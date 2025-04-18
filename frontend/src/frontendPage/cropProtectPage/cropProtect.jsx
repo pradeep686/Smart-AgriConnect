@@ -12,7 +12,7 @@ const CropProtect = () => {
           {/* Fertilizer Section */}
           <motion.div
             className="bg-white p-8 rounded-lg shadow-lg cursor-pointer transform transition-all duration-300"
-            onClick={() => navigate("/fertilizer-info")} // ✅ Now navigate is defined
+            onClick={() => navigate("/fertilizer-info")} 
             initial={{ opacity: 0, scale: 0.8 }}  
             animate={{ opacity: 1, scale: 1 }}  
             transition={{ duration: 0.1 }}       
@@ -27,7 +27,7 @@ const CropProtect = () => {
             </p>
           </motion.div>
 
-          {/* Pesticides Section */}
+        
           <motion.div
             className="bg-white p-8 rounded-lg shadow-lg cursor-pointer transform transition-all duration-300"
             onClick={() => navigate("/pesticide-info")}
