@@ -172,6 +172,29 @@ const SuccessStoriesForum = () => {
     return matchesTitle || matchesContent || matchesTags;
   });
 
+    const [isLoading, setIsLoading] = useState(true);
+  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 700);
+  
+    return () => clearTimeout(timer);
+  }, []);
+  
+  if (isLoading) {
+    return (
+      <div className="ml-64 pt-79 flex-1 flex justify-center items-center">
+     <div className="relative w-12 h-12">
+    <div className="absolute inset-0 rounded-full border-4 border-t-green-500 border-b-green-500 border-l-transparent border-r-transparent animate-spin"></div>
+    <div className="absolute inset-1 rounded-full border-4 border-t-transparent border-b-transparent border-l-green-300 border-r-green-300 animate-[spin_2s_linear_infinite]"></div>
+  </div>
+  </div>    
+    );
+  }
+
+  
+
   return (
     <div className="w-full max-w-5xl mx-auto px-4 py-8">
       <div className="mb-8">

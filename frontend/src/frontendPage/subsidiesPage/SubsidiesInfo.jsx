@@ -36,13 +36,7 @@ const SubsidiesInfo = () => {
     fetchSubsidies();
   }, [selectedCategory]);
 
-  if (loading) {
-    return (
-      <div className="ml-64 p-8 flex-1 overflow-hidden">
-        <p>Loading subsidies...</p>
-      </div>
-    );
-  }
+
 
   if (error) {
     return (
@@ -54,10 +48,31 @@ const SubsidiesInfo = () => {
     );
   }
 
+  const [isLoading, setIsLoading] = useState(true);
+
+useEffect(() => {
+  const timer = setTimeout(() => {
+    setIsLoading(false);
+  }, 700);
+
+  return () => clearTimeout(timer);
+}, []);
+
+if (isLoading) {
+  return (
+    <div className="ml-64 pt-79 flex-1 flex justify-center items-center">
+   <div className="relative w-12 h-12">
+  <div className="absolute inset-0 rounded-full border-4 border-t-green-500 border-b-green-500 border-l-transparent border-r-transparent animate-spin"></div>
+  <div className="absolute inset-1 rounded-full border-4 border-t-transparent border-b-transparent border-l-green-300 border-r-green-300 animate-[spin_2s_linear_infinite]"></div>
+</div>
+</div>    
+  );
+}
+
   return (
     <div className="ml-64 p-8 flex-1 overflow-hidden">
       <div className="mb-4">
-        <h2 className="text-3xl font-extrabold text-gray-900 flex items-center gap-2">
+        <h2 className="text-3xl font-extrabold text-orange-500 flex items-center gap-2">
           {selectedCategory}
         </h2>
         <motion.p

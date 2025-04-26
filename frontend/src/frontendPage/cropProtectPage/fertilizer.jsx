@@ -38,13 +38,26 @@ const FertilizerInfo = () => {
     }
   };
 
-  if (loading) {
-    return (
-      <div className="ml-64 p-8 flex-1 flex justify-center items-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-      </div>
-    );
-  }
+  const [isLoading, setIsLoading] = useState(true);
+
+useEffect(() => {
+  const timer = setTimeout(() => {
+    setIsLoading(false);
+  }, 700);
+
+  return () => clearTimeout(timer);
+}, []);
+
+if (isLoading) {
+  return (
+    <div className="ml-64 pt-79 flex-1 flex justify-center items-center">
+   <div className="relative w-12 h-12">
+  <div className="absolute inset-0 rounded-full border-4 border-t-green-500 border-b-green-500 border-l-transparent border-r-transparent animate-spin"></div>
+  <div className="absolute inset-1 rounded-full border-4 border-t-transparent border-b-transparent border-l-green-300 border-r-green-300 animate-[spin_2s_linear_infinite]"></div>
+</div>
+</div>    
+  );
+}
 
   if (error) {
     return (
@@ -59,7 +72,7 @@ const FertilizerInfo = () => {
   return (
     <div className="ml-64 p-8 flex-1">
       <div className="mb-4">
-        <h2 className="text-3xl font-extrabold text-gray-900 flex items-center gap-2">
+        <h2 className="text-3xl font-extrabold text-green-700 flex items-center gap-2">
           🌱 Fertilizer Information
         </h2>
         <motion.p
