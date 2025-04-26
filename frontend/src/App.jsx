@@ -18,8 +18,11 @@ import SuccessStoriesForum from "./frontendPage/forumPage/SuccessStoriesForum.js
 import Feedback from "./frontendPage/feedBackPage/feedBack";
 import Login from "./frontendPage/Authentication/login";
 import PersonalInformation from "./frontendPage/navbarPage/PersonalInformation.jsx";
+import SellerProductForm from "./frontendPage/tradeHubPage/seller.jsx";
+import BuyerPage from "./frontendPage/tradeHubPage/buyer.jsx"; 
+import Modal from "./frontendPage/tradeHubPage/modal.jsx";
 import TranslateComponent from "./frontendPage/translation/TranslateComponent.jsx";
-
+import SellerAddress from "./frontendPage/tradeHubPage/SellerAddress.jsx";
 function AppContent() {
   return (
     <>
@@ -45,6 +48,11 @@ function AppContent() {
           <Route path="/success-stories" element={<SuccessStoriesForum />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/personal-info" element={<PersonalInformation />} />
+          <Route path="/seller" element={<SellerProductForm />} />
+          <Route path="/buyer" element={<BuyerPage />} />
+          <Route path="/modal" element={<Modal />} />
+          <Route path="/seller-address" element={<SellerAddress />} />
+
         </Routes>
       </div>
     </>

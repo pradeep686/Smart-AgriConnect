@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
+
 function AddCropInsights() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({

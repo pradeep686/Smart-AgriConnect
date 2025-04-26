@@ -1,16 +1,18 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const TradeHub = () => {
+  const navigate = useNavigate(); 
   return (
     <div className="min-h-screen bg-gray-100 flex">
     <div className="ml-64 p-8 w-full">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         
-        {/* Fertilizer Section */}
+       
         <motion.div
           className="bg-white p-8 rounded-lg shadow-lg cursor-pointer transform transition-all duration-300"
-          // onClick={() => navigate("/fertilizer-info")} 
+         onClick={() => navigate("/buyer")} 
           initial={{ opacity: 0, scale: 0.8 }}  
           animate={{ opacity: 1, scale: 1 }}  
           transition={{ duration: 0.1 }}       
@@ -25,10 +27,10 @@ const TradeHub = () => {
           </p>
         </motion.div>
 
-        {/* Pesticides Section */}
+       
         <motion.div
           className="bg-white p-8 rounded-lg shadow-lg cursor-pointer transform transition-all duration-300"
-          // onClick={() => navigate("/pesticide-info")}
+          onClick={() => navigate("/seller")}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.1 }}
