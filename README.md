@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/0bed2ed3-51f5-4036-874a-5bac591197d2)# 🌾 SMART-AGRICONNECT
+🌾 SMART-AGRICONNECT
 
 ![image](https://github.com/user-attachments/assets/266c5c1c-7efa-464a-b48e-04c942140009)
 
