@@ -1,6 +1,6 @@
 # 🌾 SMART-AGRICONNECT
 
-![Smart AgriConnect Banner](https://placehold.co/1200x400/2d5e3d/white?text=SMART-AGRICONNECT+Banner) <!-- Replace with actual banner image -->
+![image](https://github.com/user-attachments/assets/266c5c1c-7efa-464a-b48e-04c942140009)
 
 A unified digital platform designed to empower farmers through technology, providing tools for subsidy navigation, crop recommendations, digital marketplaces, farm management, and community engagement.
 
