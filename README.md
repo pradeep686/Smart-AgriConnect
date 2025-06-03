@@ -193,6 +193,19 @@ CLOUDINARY_API_SECRET=your_api_secret
 
 ---
 
+# 🌟 Key Features
+
+| Module          | Innovation Factor                              |
+|-----------------|------------------------------------------------|
+| Subsidies       | Real-time tracking + application assistant     |
+| Crop Selection  | AI-powered cultivation trend analysis          |
+| Marketplace     | Escrow-based secure transactions               |
+| Farm Management | IoT integration capability                     |
+| Community       | Verified expert verification system            |
+
+---
+
+
 # 📸 Screenshots
 ![image](https://github.com/user-attachments/assets/36e14b78-09fb-40b1-a90e-cda10be44ead)
 ![image](https://github.com/user-attachments/assets/f9003dce-aafe-4fee-82d8-e81dfcf868b6)
@@ -205,18 +218,6 @@ CLOUDINARY_API_SECRET=your_api_secret
 ![image](https://github.com/user-attachments/assets/84416367-7649-41c2-98ad-ca307f7b9243)
 ![image](https://github.com/user-attachments/assets/7fea1bbc-1570-46c7-99b9-9ce76bf92221)
 ![image](https://github.com/user-attachments/assets/5d0cc988-2fe4-4489-bb5b-ea0a51c76565)
-
----
-
-# 🌟 Key Features
-
-| Module          | Innovation Factor                              |
-|-----------------|------------------------------------------------|
-| Subsidies       | Real-time tracking + application assistant     |
-| Crop Selection  | AI-powered cultivation trend analysis          |
-| Marketplace     | Escrow-based secure transactions               |
-| Farm Management | IoT integration capability                     |
-| Community       | Verified expert verification system            |
 
 ---
 
