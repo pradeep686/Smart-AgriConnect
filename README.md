@@ -1,6 +1,4 @@
-<div align="center">
-# 🌾 SMART-AGRICONNECT
-</div>
+#  🌾 SMART-AGRICONNECT
 
 ![image](https://github.com/user-attachments/assets/266c5c1c-7efa-464a-b48e-04c942140009)
 
