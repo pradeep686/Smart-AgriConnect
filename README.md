@@ -73,6 +73,9 @@ A unified digital platform designed to empower farmers through technology, provi
 
 ## 📂 Project Structure
 
+# SMART-AGRICONNECT 🌱
+
+```plaintext
 SMART-AGRICONNECT/
 │
 ├── admin/
@@ -120,7 +123,7 @@ SMART-AGRICONNECT/
 │   │   └── main.jsx
 │   ├── package.json
 │   └── vite.config.js
-
+```
 
 # ✨ Features
 
@@ -171,4 +174,6 @@ cd ../admin && npm run dev
 - 🧩 New feature development  
 - 🐛 Bug fixes  
 - 📝 Documentation improvements  
+
+```
 
