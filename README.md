@@ -1,20 +1,45 @@
-# Smart-AgriConnect
-  A Unified Digital Platform for Farmers.
+# SMART-AGRICONNECT 🌱
 
-# React + Vite
+![Smart AgriConnect Banner](https://placehold.co/1200x400/2d5e3d/white?text=SMART-AGRICONNECT+Banner) <!-- Replace with actual banner image -->
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Table of Contents
+- [Problem Statement](#-problem-statement)
+- [Solution](#-solution)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Installation](#%EF%B8%8F-installation)
+- [Key Features](#-key-features)
+- [Screenshots](#-screenshots)
+- [API Endpoints](#-api-endpoints)
+- [License](#-license)
 
-Currently, two official plugins are available:
+## 🌾 Problem Statement
+| Challenge | Impact |
+|-----------|--------|
+| Unclear subsidy information | Farmers miss financial benefits |
+| No crop demand data | Oversupply → Low prices |
+| Fragmented knowledge sharing | Limited access to expert advice |
+| Manual trading processes | Inefficient market access |
+| Outdated farm practices | Reduced productivity |
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-jygu
-df
-k
-admin page:
-docker build -t agri-connect-admin-page .
-docker run -d -p 8080:80 agri-connect-admin-page
-user page:
-docker build -t agri-connect-user-page .
-docker run -d -p 8085:80 agri-connect-user-page
+## 💡 Solution
+**Five Integrated Modules:**
+1. **Subsidy Navigator** - Real-time government scheme tracking
+2. **Crop Oracle** - AI-powered planting recommendations
+3. **AgriMarket** - Digital trading with escrow
+4. **Farm Genius** - IoT-ready management system
+5. **Krishi Community** - Verified expert Q&A platform
+
+## 🛠 Tech Stack
+**Frontend**:
+- React + Vite (Admin & Frontend)
+- Tailwind CSS
+- Cloudinary Media Management
+
+**Backend**:
+- Node.js + Express
+- MongoDB (NoSQL Database)
+- JWT Authentication
+- RESTful APIs
+
+## 📂 Project Structure
