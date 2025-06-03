@@ -146,7 +146,6 @@ SMART-AGRICONNECT/
 ---
 
 
----
 
 ## 🚀 Installation
 
@@ -176,4 +175,102 @@ cd ../admin && npm run dev
 - 📝 Documentation improvements  
 
 ```
+
+# 🔧 Environment Variables
+
+Create a `.env` file in the `backend/` directory with the following keys:
+
+```env
+# Backend .env
+
+PORT=5000
+MONGO_URL=mongodb://localhost:27017/smartagri
+JWT_SECRET=your_jwt_secret_key
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+```
+
+# 🌟 Key Features
+
+| Module          | Innovation Factor                              |
+|-----------------|------------------------------------------------|
+| Subsidies       | Real-time tracking + application assistant     |
+| Crop Selection  | AI-powered cultivation trend analysis          |
+| Marketplace     | Escrow-based secure transactions               |
+| Farm Management | IoT integration capability                     |
+| Community       | Verified expert verification system            |
+
+---
+
+# 🤝 Contribute
+
+We welcome contributions! Please fork the repository and submit pull requests (PRs) for:
+
+- 🧩 New feature development  
+- 🐛 Bug fixes  
+- 📝 Documentation improvements  
+
+
+# 📝 MIT License
+
+© 2025 Sukant C
+
+---
+
+🚀 **Permission is hereby granted**, free of charge, to any person obtaining a copy  
+of this software and associated documentation files (the "Software"), to deal  
+in the Software without restriction, including without limitation the rights to:  
+
+- ✅ Use  
+- ✅ Copy  
+- ✅ Modify  
+- ✅ Merge  
+- ✅ Publish  
+- ✅ Distribute  
+- ✅ Sublicense  
+- ✅ Sell copies of the Software  
+
+and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+📜 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+---
+
+⚠️ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,  
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  
+
+🛑 IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,  
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+# 📸 Screenshots
+
+### Dashboard
+
+![Dashboard Screenshot](path/to/dashboard.png)
+
+---
+
+### Crop Selection
+
+![Crop Selection Screenshot](path/to/crop-selection.png)
+
+---
+
+### Marketplace
+
+![Marketplace Screenshot](path/to/marketplace.png)
+
+---
+
+### Farm Management
+
+![Farm Management Screenshot](path/to/farm-management.png)
+
+---
+
+### Community
+
+![Community Screenshot](path/to/community.png)
 
