@@ -139,8 +139,12 @@ SMART-AGRICONNECT/
 - **Authentication**: JWT  
 - **Media Storage**: Cloudinary  
 
-# 🚀 Installation
 
+---
+
+## 🚀 Installation
+
+bash
 # Clone repository
 git clone https://github.com/yourusername/SMART-AGRICONNECT.git
 
