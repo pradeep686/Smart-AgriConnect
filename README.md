@@ -1,4 +1,4 @@
-# 🌾 SMART-AGRICONNECT
+![image](https://github.com/user-attachments/assets/0bed2ed3-51f5-4036-874a-5bac591197d2)# 🌾 SMART-AGRICONNECT
 
 ![image](https://github.com/user-attachments/assets/266c5c1c-7efa-464a-b48e-04c942140009)
 
@@ -194,34 +194,17 @@ CLOUDINARY_API_SECRET=your_api_secret
 ---
 
 # 📸 Screenshots
-
-### Dashboard
-
-![Dashboard Screenshot](path/to/dashboard.png)
-
----
-
-### Crop Selection
-
-![Crop Selection Screenshot](path/to/crop-selection.png)
-
----
-
-### Marketplace
-
-![Marketplace Screenshot](path/to/marketplace.png)
-
----
-
-### Farm Management
-
-![Farm Management Screenshot](path/to/farm-management.png)
-
----
-
-### Community
-
-![Community Screenshot](path/to/community.png)
+![image](https://github.com/user-attachments/assets/36e14b78-09fb-40b1-a90e-cda10be44ead)
+![image](https://github.com/user-attachments/assets/f9003dce-aafe-4fee-82d8-e81dfcf868b6)
+![image](https://github.com/user-attachments/assets/716b2b1a-9f42-4e04-8298-9a49b7a71955)
+![image](https://github.com/user-attachments/assets/4083b718-f257-4bb8-b544-7a1422b6b0b8)
+![image](https://github.com/user-attachments/assets/bb0eed46-e1ff-4567-8b45-d4c453ff2e58)
+![image](https://github.com/user-attachments/assets/7a3f5c6b-14ae-415d-a448-fe02b5be9c90)
+![image](https://github.com/user-attachments/assets/7b9e2891-20b5-4297-8178-c27a4a3a46cf)
+![image](https://github.com/user-attachments/assets/beec0fbf-599e-4723-af81-0742d7dc0d55)
+![image](https://github.com/user-attachments/assets/84416367-7649-41c2-98ad-ca307f7b9243)
+![image](https://github.com/user-attachments/assets/7fea1bbc-1570-46c7-99b9-9ce76bf92221)
+![image](https://github.com/user-attachments/assets/5d0cc988-2fe4-4489-bb5b-ea0a51c76565)
 
 ---
 
