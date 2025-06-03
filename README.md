@@ -43,3 +43,52 @@
 - RESTful APIs
 
 ## 📂 Project Structure
+
+```plaintext
+SMART-AGRICONNECT/
+│
+├── admin/
+│   ├── node_modules/
+│   ├── public/
+│   │   ├── assets/
+│   │   └── index.html
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   ├── .dockerignore
+│   ├── Dockerfile
+│   ├── package.json
+│   └── vite.config.js
+│
+├── backend/
+│   ├── config/
+│   │   └── db.js
+│   ├── controllers/
+│   │   ├── authController.js
+│   │   └── subsidyController.js
+│   ├── models/
+│   │   ├── User.js
+│   │   └── Subsidy.js
+│   ├── routes/
+│   │   ├── authRoutes.js
+│   │   └── apiRoutes.js
+│   ├── utils/
+│   │   ├── cloudinary.js
+│   │   └── jwt.js
+│   ├── .env
+│   ├── package.json
+│   └── server.js
+│
+├── user/
+│   ├── node_modules/
+│   ├── public/
+│   │   └── index.html
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   ├── package.json
+│   └── vite.config.js
