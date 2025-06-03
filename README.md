@@ -209,7 +209,42 @@ We welcome contributions! Please fork the repository and submit pull requests (P
 
 - 🧩 New feature development  
 - 🐛 Bug fixes  
-- 📝 Documentation improvements  
+- 📝 Documentation improvements
+
+---
+
+# 📸 Screenshots
+
+### Dashboard
+
+![Dashboard Screenshot](path/to/dashboard.png)
+
+---
+
+### Crop Selection
+
+![Crop Selection Screenshot](path/to/crop-selection.png)
+
+---
+
+### Marketplace
+
+![Marketplace Screenshot](path/to/marketplace.png)
+
+---
+
+### Farm Management
+
+![Farm Management Screenshot](path/to/farm-management.png)
+
+---
+
+### Community
+
+![Community Screenshot](path/to/community.png)
+
+
+---
 
 
 # 📝 MIT License
@@ -243,34 +278,4 @@ INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PA
 🛑 IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,  
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-
-# 📸 Screenshots
-
-### Dashboard
-
-![Dashboard Screenshot](path/to/dashboard.png)
-
----
-
-### Crop Selection
-
-![Crop Selection Screenshot](path/to/crop-selection.png)
-
----
-
-### Marketplace
-
-![Marketplace Screenshot](path/to/marketplace.png)
-
----
-
-### Farm Management
-
-![Farm Management Screenshot](path/to/farm-management.png)
-
----
-
-### Community
-
-![Community Screenshot](path/to/community.png)
 
