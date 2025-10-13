@@ -62,7 +62,7 @@ function NavBar({ setSearchQuery }) {
       {/* Announcement Bar */}
       <div className="w-full bg-black text-slate-300 text-center py-2 text-sm md:text-base">
         <p>
-          Summer Sale For All Products and Free Delivery - Upto 50% OFF!
+          Free Delivery For All Products - Upto 50% OFF!
           <span className="text-white font-bold ml-2 underline cursor-pointer hover:text-amber-300 transition-colors">
             Shop Now
           </span>
@@ -75,7 +75,7 @@ function NavBar({ setSearchQuery }) {
         <div className="flex items-center gap-3 flex-shrink-0">
           <Link to="/" className="flex items-center gap-3">
             <img src={icon} className="w-12 h-12 md:w-16 md:h-16" alt="C&C Logo" />
-            <h1 className="text-xl md:text-2xl font-extrabold tracking-wide text-gray-800">C&C</h1>
+            <h1 className="text-xl md:text-2xl font-extrabold tracking-wide text-gray-800">Agri Connect</h1>
           </Link>
         </div>
 

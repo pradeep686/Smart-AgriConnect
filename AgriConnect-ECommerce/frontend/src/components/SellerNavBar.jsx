@@ -17,7 +17,7 @@ function SellerNavBar() {
       <div className="flex items-center justify-between px-6 py-3 bg-white shadow-md">
         <div className="flex items-center gap-3">
           <img src={icon} className="w-16 h-16" alt="Logo" />
-          <h1 className="text-2xl font-extrabold tracking-wide text-gray-800">Click & Collect</h1>
+          <h1 className="text-2xl font-extrabold tracking-wide text-gray-800">Agri Connect</h1>
           <h1 className="text-2xl font-bold text-gray-700 ml-105">Seller Dashboard</h1>
         </div>
 
